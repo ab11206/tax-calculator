@@ -226,12 +226,45 @@ footer b{color:var(--blue-dk)}
   #copyright{font-size:6.5pt;margin-top:3px}
 }
 #printFooter{display:none}
+
+/* ---------- password gate ---------- */
+#gate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+  padding:20px;background:rgba(238,244,249,.72);backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px)}
+#gateBox{background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 18px 50px rgba(20,85,137,.22);padding:28px 30px;max-width:360px;width:100%;
+  text-align:center}
+#gateBox img{height:56px;width:auto;margin-bottom:8px}
+#gateBox .gsl{font-size:10.5px;font-weight:700;color:var(--blue);letter-spacing:.9px;margin-bottom:16px}
+#gateBox h2{font-size:15px;color:var(--ink);margin:0 0 16px;font-weight:600}
+#gatePw{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:6px;
+  font-size:16px;text-align:center;letter-spacing:3px;margin-bottom:12px;font-family:inherit}
+#gatePw:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(15,117,188,.15)}
+#gateGo{width:100%;padding:11px;border:none;border-radius:6px;background:var(--blue);color:#fff;
+  font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+#gateGo:hover{background:var(--blue-dk)}
+#gateErr{display:none;color:var(--bad);font-size:12.5px;margin-top:11px}
+#gate.shake #gateBox{animation:gshake .35s}
+@keyframes gshake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-7px)}
+  40%,80%{transform:translateX(7px)}}
+body.locked{overflow:hidden}
+@media print{ #gate{display:none!important} }
 </style>
 <style type="text/css" nonce="">
 .redacted {
   color: red !important;
 }</style></head>
 <body>
+<div id="gate">
+  <div id="gateBox">
+    <img id="gateLogo" src="logo.png" alt="2 File EZ Tax Returns" onerror="this.onerror=null;this.src=LOGO_FALLBACK">
+    <div class="gsl">PERSONAL RETURNS ONLY · 100% FOCUSED ON YOU</div>
+    <h2>Please enter a password to continue</h2>
+    <input type="password" id="gatePw" inputmode="numeric" autocomplete="off" placeholder="Password" maxlength="12">
+    <button id="gateGo" type="button">Continue</button>
+    <div id="gateErr">That password is not correct.</div>
+  </div>
+</div>
 <div id="wm"></div>
 <div class="wrap">
 
@@ -778,15 +811,63 @@ const NYC_ZIP_CITY_RANGES = [
   [11201,11256,'Brooklyn']
 ];
 
+/* ==========================================================================
+   UPSTATE ZIP -> CITY  (client-requested regions)
+   Rockland County (Monsey / Spring Valley and neighbours), the town of
+   Monroe in Orange County, and the Sullivan County Catskills / Borscht Belt.
+   USPS-assigned city names, transcribed individually.
+   ========================================================================== */
+const UPSTATE_ZIP_CITY = (function(){
+  const byCity = {
+    // --- Rockland County ---
+    'Suffern':[10901], 'Blauvelt':[10913], 'Congers':[10920],
+    'Garnerville':[10923], 'Haverstraw':[10927], 'Hillburn':[10931],
+    'Monsey':[10952], 'Nanuet':[10954], 'New City':[10956],
+    'Nyack':[10960], 'Orangeburg':[10962], 'Palisades':[10964],
+    'Pearl River':[10965], 'Piermont':[10968], 'Pomona':[10970],
+    'Sloatsburg':[10974], 'Sparkill':[10976], 'Spring Valley':[10977,10901],
+    'Stony Point':[10980], 'Tappan':[10983], 'Thiells':[10984],
+    'Tomkins Cove':[10986], 'Valley Cottage':[10989],
+    'West Haverstraw':[10993], 'West Nyack':[10994],
+    // Spring Valley shares 10977; correct primary below overrides the dup
+    // --- Orange County: town of Monroe ---
+    'Monroe':[10950], 'Central Valley':[10917], 'Harriman':[10926],
+    'Highland Mills':[10930],
+    // --- Sullivan County (Catskills / Borscht Belt) ---
+    'Monticello':[12701], 'Bloomingburg':[12721], 'Callicoon':[12723],
+    'Cochecton':[12726], 'Eldred':[12732], 'Fallsburg':[12733],
+    'Ferndale':[12734], 'Fremont Center':[12736], 'Glen Wild':[12738],
+    'Grahamsville':[12740], 'Hankins':[12741], 'Highland Lake':[12743],
+    'Hortonville':[12745], 'Hurleyville':[12747], 'Jeffersonville':[12748],
+    'Kauneonga Lake':[12749], 'Kenoza Lake':[12750], 'Kiamesha Lake':[12751],
+    'Lake Huntington':[12752], 'Liberty':[12754], 'Livingston Manor':[12758],
+    'Loch Sheldrake':[12759], 'Long Eddy':[12760], 'Mongaup Valley':[12762],
+    'Mountain Dale':[12763], 'Narrowsburg':[12764], 'Neversink':[12765],
+    'North Branch':[12766], 'Parksville':[12768], 'Rock Hill':[12775],
+    'Roscoe':[12776], 'Smallwood':[12778], 'South Fallsburg':[12779],
+    'Summitville':[12781], 'Swan Lake':[12783], 'White Lake':[12786],
+    'White Sulphur Springs':[12787], 'Woodbourne':[12788],
+    'Woodridge':[12789], 'Wurtsboro':[12790], 'Youngsville':[12791],
+    'Callicoon Center':[12724], 'Claryville':[12725]
+  };
+  const m = {};
+  for (const city in byCity) byCity[city].forEach(function(z){ if(!m[z]) m[z] = city; });
+  // primary-city overrides where a zip appeared under two names above
+  m[10901] = 'Suffern';
+  m[10977] = 'Spring Valley';
+  return m;
+})();
+
 function zipToCity(zip){
   const n = parseInt(String(zip).slice(0,5), 10);
   if (isNaN(n)) return null;
   if (QUEENS_ZIP_CITY[n]) return QUEENS_ZIP_CITY[n];
+  if (UPSTATE_ZIP_CITY[n]) return UPSTATE_ZIP_CITY[n];
   for (let i=0;i<NYC_ZIP_CITY_RANGES.length;i++){
     const r = NYC_ZIP_CITY_RANGES[i];
     if (n >= r[0] && n <= r[1]) return r[2];
   }
-  return null;                      // outside NYC — leave the city to typing
+  return null;                      // still typed where the name isn't known
 }
 
 /* ==========================================================================
@@ -1150,6 +1231,32 @@ function compareBenefit(D) {
    ========================================================================== */
 
 const $ = id => document.getElementById(id);
+
+/* ---------- password gate ---------- */
+(function(){
+  const PASSWORD = '5339';
+  const gate = $('gate'), box = $('gatePw'), go = $('gateGo'), err = $('gateErr');
+  if (!gate) return;
+  document.body.classList.add('locked');
+
+  function attempt(){
+    if (box.value === PASSWORD){
+      gate.style.display = 'none';
+      document.body.classList.remove('locked');
+    } else {
+      err.style.display = 'block';
+      gate.classList.remove('shake');       // restart the animation
+      void gate.offsetWidth;
+      gate.classList.add('shake');
+      box.value = ''; box.focus();
+    }
+  }
+  go.addEventListener('click', attempt);
+  box.addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
+  box.addEventListener('input', () => { err.style.display = 'none'; });
+  setTimeout(() => box.focus(), 60);
+})();
+
 function commas(n){
   const s = String(Math.abs(Math.round(n || 0)));
   return s.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
