@@ -1548,13 +1548,11 @@ function rebalance(changedId){
 }
 
 /* ---------- benefit toggle & option selection ---------- */
-function showBenefit(on){
-  // run() reads the checkbox and sets the display; just make sure it matches
-  // and re-render
-  $('incBenefit').checked = on;
-  run();
-}
+// The benefit section is revealed only once the password has been entered.
+// benefitUnlocked stays true for the rest of the session so it isn't asked twice.
 let benefitUnlocked = false;
+function benefitVisible(){ return $('incBenefit').checked && benefitUnlocked; }
+function showBenefit(){ run(); }   // run() reads benefitVisible() to decide
 (function(){
   const BEN_PASSWORD = '2458';
   const gate = $('benGate'), pw = $('benPw'), go = $('benGo'),
@@ -1566,21 +1564,21 @@ let benefitUnlocked = false;
   function accept(){
     if (pw.value === BEN_PASSWORD){
       benefitUnlocked = true; close();
-      $('incBenefit').checked = true; showBenefit(true);
+      $('incBenefit').checked = true; run();   // now the full page shows the new section
     } else {
       err.style.display='block';
       gate.classList.remove('shake'); void gate.offsetWidth; gate.classList.add('shake');
       pw.value=''; pw.focus();
     }
   }
-  function reject(){ close(); $('incBenefit').checked = false; showBenefit(false); }
+  function reject(){ close(); $('incBenefit').checked = false; run(); }
 
   $('incBenefit').addEventListener('change', ()=>{
     if ($('incBenefit').checked){
-      if (benefitUnlocked) showBenefit(true);   // only ask once per session
-      else open();
+      if (benefitUnlocked) run();          // already unlocked this session
+      else open();                         // ask first; page stays as it was behind the box
     } else {
-      showBenefit(false);
+      run();
     }
   });
   go.addEventListener('click', accept);
@@ -1733,7 +1731,10 @@ function costLines(host, K, sel){
 }
 
 function run(){
-  const incB = $('incBenefit').checked;
+  // The benefit section is "active" only when the box is checked AND the password
+  // has been entered. Until then the page renders exactly as it did before, with
+  // no benefit section, while the password box sits on top.
+  const incB = benefitVisible();
   syncTotal();
 
   // "Before benefits" must leave the benefit out altogether — not merely treat it
