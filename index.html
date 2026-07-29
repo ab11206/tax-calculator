@@ -104,6 +104,7 @@ input:disabled{background:#f4f7fa;color:var(--muted)}
 
 #costBox{background:var(--box);border-radius:8px;padding:18px 20px;margin-bottom:12px;
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px}
+#costBox.hidden,#cmpWrap.hidden,#benefitRow.hidden{display:none!important}
 @media(max-width:700px){#costBox{grid-template-columns:1fr;gap:14px}}
 #costBox .ttl{color:var(--box-txt);font-size:11.5px;font-weight:700;text-transform:uppercase;
   letter-spacing:.8px;line-height:1.35}
@@ -187,6 +188,7 @@ footer b{color:var(--blue-dk)}
   #wm{display:none}
   .grid,.card,.bar,.noprint,#contactBlk{display:none!important}
   #printSheet{display:block!important}
+  #psCost.hidden,#psCmp.hidden{display:none!important}
   header{border:none;border-bottom:2px solid var(--blue-dk);border-radius:0;padding:0 0 5px;margin-bottom:6px}
   header img{height:32px}
   header .yr b{font-size:9pt}header .yr{font-size:6.8pt}header .slogan{font-size:7pt}
@@ -249,6 +251,27 @@ footer b{color:var(--blue-dk)}
   40%,80%{transform:translateX(7px)}}
 body.locked{overflow:hidden}
 @media print{ #gate{display:none!important} }
+
+/* ---------- benefit section password gate ---------- */
+#benGate{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;
+  padding:20px;background:rgba(20,40,60,.45);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+#benGate.show{display:flex}
+#benGateBox{background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 18px 50px rgba(20,85,137,.28);padding:24px 26px;max-width:340px;width:100%;text-align:center}
+#benGateBox .gsl{font-size:10.5px;font-weight:700;color:var(--blue);letter-spacing:.9px;margin-bottom:12px}
+#benGateBox h2{font-size:14px;color:var(--ink);margin:0 0 15px;font-weight:600}
+#benPw{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:6px;font-size:16px;
+  text-align:center;letter-spacing:3px;margin-bottom:12px;font-family:inherit}
+#benPw:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(15,117,188,.15)}
+.benBtns{display:flex;gap:8px}
+.benBtns button{flex:1;padding:10px;border-radius:6px;border:1px solid var(--blue);background:var(--blue);
+  color:#fff;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit}
+.benBtns button.alt{background:#fff;color:var(--blue)}
+.benBtns button:hover{background:var(--blue-dk);color:#fff}
+.benBtns button.alt:hover{background:#f2f9fe;color:var(--blue)}
+#benErr{display:none;color:var(--bad);font-size:12.5px;margin-top:11px}
+#benGate.shake #benGateBox{animation:gshake .35s}
+@media print{ #benGate{display:none!important} }
 </style>
 <style type="text/css" nonce="">
 .redacted {
@@ -263,6 +286,18 @@ body.locked{overflow:hidden}
     <input type="password" id="gatePw" inputmode="numeric" autocomplete="off" placeholder="Password" maxlength="12">
     <button id="gateGo" type="button">Continue</button>
     <div id="gateErr">That password is not correct.</div>
+  </div>
+</div>
+<div id="benGate">
+  <div id="benGateBox">
+    <div class="gsl">EMPLOYER CHILDCARE BENEFIT</div>
+    <h2>Enter the password to open this section</h2>
+    <input type="password" id="benPw" inputmode="numeric" autocomplete="off" placeholder="Password" maxlength="12">
+    <div class="benBtns">
+      <button id="benCancel" type="button" class="alt">Cancel</button>
+      <button id="benGo" type="button">Continue</button>
+    </div>
+    <div id="benErr">That password is not correct.</div>
   </div>
 </div>
 <div id="wm"></div>
@@ -350,7 +385,7 @@ body.locked{overflow:hidden}
       <div><label>Pre-tax deferrals (401k, HSA, IRA)</label><input type="text" class="money" id="pretax" value="0"></div>
       <div><label>Investment income (interest, dividends)</label><input type="text" class="money" id="investInc" value="0"></div>
     </div>
-    <div id="benefitRow" style="display:none">
+    <div id="benefitRow" class="hidden">
       <div class="row"><div><label>Annual employer childcare benefit</label>
         <input type="text" class="money" id="benefit" value="24,000"></div></div>
     </div>
@@ -367,12 +402,18 @@ body.locked{overflow:hidden}
 
   <div class="card">
     <h2>Children</h2>
-    <div class="kidhdr"><span></span><span>Age</span><span>Child care expense paid</span><span></span><span></span></div>
+    <label class="chk" id="careRow"><input type="checkbox" id="incCare">
+      <span>Include child care expense
+      <small>Adds a childcare amount per child, used for the dependent care credit.
+      Leave off if no childcare was paid.</small></span></label>
+    <div class="kidhdr" id="kidHdr"><span></span><span>Age</span>
+      <span id="careHdr">Child care expense paid</span><span></span><span></span></div>
     <div id="kidList"></div>
     <button class="addk" id="addKid">+ Add child</button>
-    <div class="note">Ages as of December 31, 2026. Maximum 12 children.<br>
+    <div class="note" id="careNote" style="display:none">
       We assume at least the maximum counted under the credit rules is paid —
       $3,000 per child, up to $6,000 total.</div>
+    <div class="note">Ages as of December 31, 2026. Maximum 12 children.</div>
   </div>
 
   <div class="card noprint">
@@ -409,7 +450,7 @@ body.locked{overflow:hidden}
     <div class="disc" id="heroDisc"></div>
   </div>
 
-  <div id="costBox" style="display:none">
+  <div id="costBox" class="hidden">
     <div>
       <div class="ttl">Additional taxes this benefit will cost you</div>
       <div class="amt" id="cbAmt">$0</div>
@@ -418,7 +459,7 @@ body.locked{overflow:hidden}
     <div class="lines" id="cbLines"></div>
   </div>
 
-  <div class="cmp" id="cmpWrap" style="display:none">
+  <div class="cmp hidden" id="cmpWrap">
     <div class="opt" id="optA" data-opt="exclusion">
       <div class="pick"></div>
       <div class="tag" id="tagA" style="display:none">Recommended</div>
@@ -461,13 +502,13 @@ body.locked{overflow:hidden}
       <div class="big" id="psBig">$0</div></div>
     <div class="r" id="psStats"></div>
   </div>
-  <div id="psCost" style="display:none">
+  <div id="psCost" class="hidden">
     <div><div class="ttl">Additional taxes this benefit will cost you</div>
       <div class="amt" id="psCbAmt">$0</div>
       <div class="exp" id="psCbExp"></div></div>
     <div id="psCbLines"></div>
   </div>
-  <div id="psCmp" style="display:none"></div>
+  <div id="psCmp" class="hidden"></div>
   <div id="psGrid">
     <div class="box"><h3>Prepared for</h3><div id="psClient"></div></div>
     <div class="box"><h3>Return summary</h3><div id="psInputs"></div></div>
@@ -1267,17 +1308,18 @@ const money = el => Number(String(el.value).replace(/[^0-9.]/g, '')) || 0;
 const setMoney = (el, v) => { el.value = commas(v); };
 
 const DEFAULTS = {
-  status:'mfj', state:'NY', nycRes:true, incBenefit:false, locked:false,
-  kids:[{age:5,care:3000,student:false},{age:3,care:3000,student:false},{age:8,care:0,student:false}],
+  status:'mfj', state:'NY', nycRes:true, incBenefit:false, incCare:false, locked:false,
+  kids:[{age:5,care:0,student:false},{age:3,care:0,student:false},{age:8,care:0,student:false}],
   fields:{ lastName:'',tpFirst:'',spFirst:'',addr:'',city:'',stateAbbr:'NY',zip:'',
            email:'',phoneHome:'',phoneMobile:'',
            wagesTP:'18,000',wagesSP:'7,500',necTP:'0',necSP:'0',expTP:'0',expSP:'0',
            pretax:'0',investInc:'0',whFed:'0',whState:'0',whLocal:'0',benefit:'24,000' }
 };
 
-let STATUS = 'mfj', STATE = 'NY', LOCKED = false, SELECTED = 'exclusion';
+let STATUS = 'mfj', STATE = 'NY', LOCKED = false, SELECTED = 'exclusion', INC_CARE = false;
 let KIDS = DEFAULTS.kids.map(function(k){ return Object.assign({}, k); });
 const MAX_KIDS = 12;
+const CARE_DEFAULT = 3000;    // seeded into the first two children when care is switched on
 
 /* ---------- watermark ---------- */
 function paintWatermark(){
@@ -1367,11 +1409,16 @@ function applyZip(){
 /* ---------- children ---------- */
 function renderKids(){
   const box = $('kidList'); box.innerHTML = '';
+  const cols = INC_CARE ? '56px 62px 1fr auto auto' : '56px 62px auto auto';
   KIDS.forEach((k,i)=>{
     const d = document.createElement('div'); d.className = 'kid';
+    d.style.gridTemplateColumns = cols;
+    const careCell = INC_CARE
+      ? `<input type="text" class="money" value="${commas(k.care)}" data-i="${i}" data-f="care">`
+      : '';
     d.innerHTML = `<span class="lbl">Child ${i+1}</span>
       <input type="number" min="0" max="26" value="${k.age}" data-i="${i}" data-f="age">
-      <input type="text" class="money" value="${commas(k.care)}" data-i="${i}" data-f="care">
+      ${careCell}
       <span class="stu"><input type="checkbox" data-i="${i}" data-f="student" ${k.student?'checked':''}>student</span>
       <button class="x" data-del="${i}" title="Remove">&times;</button>`;
     box.appendChild(d);
@@ -1388,6 +1435,10 @@ function renderKids(){
   box.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',e=>{
     KIDS.splice(+e.currentTarget.dataset.del,1); renderKids(); run();
   }));
+  // header + note follow the include-care flag
+  $('careHdr').style.display = INC_CARE ? '' : 'none';
+  $('careNote').style.display = INC_CARE ? 'block' : 'none';
+  $('kidHdr').style.gridTemplateColumns = cols;
   $('addKid').disabled = KIDS.length >= MAX_KIDS;
   $('addKid').textContent = KIDS.length >= MAX_KIDS
     ? `Maximum ${MAX_KIDS} children` : '+ Add child';
@@ -1395,6 +1446,18 @@ function renderKids(){
 $('addKid').addEventListener('click',()=>{
   if (KIDS.length >= MAX_KIDS) return;
   KIDS.push({age:5,care:0,student:false}); renderKids(); run();
+});
+
+/* ---------- include child care expense ---------- */
+$('incCare').addEventListener('change', ()=>{
+  INC_CARE = $('incCare').checked;
+  if (INC_CARE){
+    // seed the first two children at the assumed maximum, leave the rest at 0
+    KIDS.forEach(function(k,i){ if (i < 2 && (k.care||0) === 0) k.care = CARE_DEFAULT; });
+  } else {
+    KIDS.forEach(function(k){ k.care = 0; });
+  }
+  renderKids(); run();
 });
 
 /* ---------- segmented controls ---------- */
@@ -1485,13 +1548,46 @@ function rebalance(changedId){
 }
 
 /* ---------- benefit toggle & option selection ---------- */
-$('incBenefit').addEventListener('change',()=>{
-  const on = $('incBenefit').checked;
-  $('benefitRow').style.display = on?'block':'none';
-  $('costBox').style.display    = on?'grid':'none';
-  $('cmpWrap').style.display    = on?'grid':'none';
+function showBenefit(on){
+  // run() reads the checkbox and sets the display; just make sure it matches
+  // and re-render
+  $('incBenefit').checked = on;
   run();
-});
+}
+let benefitUnlocked = false;
+(function(){
+  const BEN_PASSWORD = '2458';
+  const gate = $('benGate'), pw = $('benPw'), go = $('benGo'),
+        cancel = $('benCancel'), err = $('benErr');
+
+  function close(){ gate.classList.remove('show'); pw.value=''; err.style.display='none'; }
+  function open(){ err.style.display='none'; pw.value=''; gate.classList.add('show');
+                   setTimeout(()=>pw.focus(),60); }
+  function accept(){
+    if (pw.value === BEN_PASSWORD){
+      benefitUnlocked = true; close();
+      $('incBenefit').checked = true; showBenefit(true);
+    } else {
+      err.style.display='block';
+      gate.classList.remove('shake'); void gate.offsetWidth; gate.classList.add('shake');
+      pw.value=''; pw.focus();
+    }
+  }
+  function reject(){ close(); $('incBenefit').checked = false; showBenefit(false); }
+
+  $('incBenefit').addEventListener('change', ()=>{
+    if ($('incBenefit').checked){
+      if (benefitUnlocked) showBenefit(true);   // only ask once per session
+      else open();
+    } else {
+      showBenefit(false);
+    }
+  });
+  go.addEventListener('click', accept);
+  cancel.addEventListener('click', reject);
+  pw.addEventListener('keydown', e=>{ if(e.key==='Enter') accept(); });
+  pw.addEventListener('input', ()=>{ err.style.display='none'; });
+})();
 ['optA','optB'].forEach(id=>{
   $(id).addEventListener('click', ()=>{ SELECTED = $(id).dataset.opt; run(); });
 });
@@ -1654,6 +1750,13 @@ function run(){
 
   const SHOW = incB ? B : A;
 
+  // the benefit section, cost box and option cards follow the checkbox state on
+  // every render — driven by a class rather than an inline display value, because
+  // older browsers do not accept an inline "display:grid" assignment
+  $('benefitRow').classList.toggle('hidden', !incB);
+  $('costBox').classList.toggle('hidden', !incB);
+  $('cmpWrap').classList.toggle('hidden', !incB);
+
   // hero
   $('heroBig').textContent = usd(SHOW.combined);
   $('heroCap').textContent = SHOW.combined >= 0
@@ -1734,13 +1837,13 @@ function buildPrintSheet(A, B, K, flags, incB){
   if (SHOW.F.seTax) add('SE tax', SHOW.F.seTax);
 
   if (incB && K){
-    $('psCost').style.display='grid';
+    $('psCost').classList.remove('hidden');
     const S = SELECTED==='exclusion' ? K.exclusion : K.credit;
     $('psCbAmt').textContent = usdp(S.cost);
     $('psCbExp').innerHTML = 'in new income, Social Security &amp; Medicare tax on your '
                            + usdp(K.gross) + ' benefit';
     costLines($('psCbLines'), K, SELECTED);
-    $('psCmp').style.display='grid';
+    $('psCmp').classList.remove('hidden');
     $('psCmp').innerHTML =
       `<div class="o${SELECTED==='exclusion'?' sel':''}"><h4>${$('optAh').textContent}`
       + `${K.recommended==='exclusion'?' &middot; RECOMMENDED':''}</h4>`
@@ -1748,7 +1851,7 @@ function buildPrintSheet(A, B, K, flags, incB){
       + `<div class="o${SELECTED==='credit'?' sel':''}"><h4>Claim the tax credit instead`
       + `${K.recommended==='credit'?' &middot; RECOMMENDED':''}</h4>`
       + `<div class="a">${usdp(K.credit.cost)}</div><div class="c">additional taxes</div></div>`;
-  } else { $('psCost').style.display='none'; $('psCmp').style.display='none'; }
+  } else { $('psCost').classList.add('hidden'); $('psCmp').classList.add('hidden'); }
 
   const cl=$('psClient'); cl.innerHTML='';
   const sp=$('spFirst').value.trim();
@@ -1856,13 +1959,13 @@ $('btnEmail').addEventListener('click',()=>{
 $('btnReset').addEventListener('click',()=>{
   if (!confirm('Clear everything and go back to the default settings?')) return;
   STATUS=DEFAULTS.status; STATE=DEFAULTS.state; SELECTED='exclusion';
-  LOCKED=false; KIDS=DEFAULTS.kids.map(function(k){ return Object.assign({}, k); });
+  LOCKED=false; INC_CARE=false; KIDS=DEFAULTS.kids.map(function(k){ return Object.assign({}, k); });
   Object.entries(DEFAULTS.fields).forEach(([id,v])=>{ if($(id)) $(id).value=v; });
-  $('incBenefit').checked=false; $('nycRes').checked=DEFAULTS.nycRes;
+  $('incBenefit').checked=false; $('incCare').checked=false; $('nycRes').checked=DEFAULTS.nycRes;
   $('tp65').checked=false; $('sp65').checked=false;
   $('lockBtn').classList.remove('on'); $('lockBtn').textContent='Unlocked';
   $('totalIncome').disabled=true;
-  $('benefitRow').style.display='none'; $('costBox').style.display='none'; $('cmpWrap').style.display='none';
+  $('benefitRow').classList.add('hidden'); $('costBox').classList.add('hidden'); $('cmpWrap').classList.add('hidden');
   $('segStatus').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===STATUS));
   $('segState').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===STATE));
   document.querySelectorAll('input[data-v]').forEach(el=>{
@@ -1879,7 +1982,7 @@ function refreshPick(){
   SCENARIOS.forEach((sc,i)=>{const o=document.createElement('option');o.value=i;o.textContent=sc.name;s.appendChild(o);});
 }
 function snapshot(){
-  const o={STATUS,STATE,KIDS,LOCKED,SELECTED,
+  const o={STATUS,STATE,KIDS,LOCKED,SELECTED,INC_CARE,
            incBenefit:$('incBenefit').checked,nycRes:$('nycRes').checked,
            tp65:$('tp65').checked,sp65:$('sp65').checked,fields:{}};
   Object.keys(DEFAULTS.fields).forEach(id=>{ if($(id)) o.fields[id]=$(id).value; });
@@ -1887,18 +1990,20 @@ function snapshot(){
 }
 function restore(o){
   STATUS=o.STATUS||'mfj'; STATE=o.STATE||'NY'; KIDS=o.KIDS||[];
-  LOCKED=!!o.LOCKED; SELECTED=o.SELECTED||'exclusion';
+  LOCKED=!!o.LOCKED; SELECTED=o.SELECTED||'exclusion'; INC_CARE=!!o.INC_CARE;
   Object.entries(o.fields||{}).forEach(([id,v])=>{ if($(id)) $(id).value=v; });
+  $('incCare').checked=INC_CARE;
   $('incBenefit').checked=!!o.incBenefit; $('nycRes').checked=!!o.nycRes;
   $('tp65').checked=!!o.tp65; $('sp65').checked=!!o.sp65;
+  if (o.incBenefit) benefitUnlocked = true;   // a saved draft already cleared the gate
   $('lockBtn').classList.toggle('on',LOCKED);
   $('lockBtn').textContent=LOCKED?'Locked':'Unlocked';
   $('totalIncome').disabled=!LOCKED;
   $('segStatus').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===STATUS));
   $('segState').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===STATE));
-  $('benefitRow').style.display=o.incBenefit?'block':'none';
-  $('costBox').style.display=o.incBenefit?'grid':'none';
-  $('cmpWrap').style.display=o.incBenefit?'grid':'none';
+  $('benefitRow').classList.toggle('hidden', !o.incBenefit);
+  $('costBox').classList.toggle('hidden', !o.incBenefit);
+  $('cmpWrap').classList.toggle('hidden', !o.incBenefit);
   syncStatus(); syncState(); renderKids(); run();
 }
 $('btnStore').addEventListener('click',()=>{
